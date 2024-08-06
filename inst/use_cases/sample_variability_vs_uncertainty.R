@@ -4,39 +4,49 @@
 ## Implication: Erronoeus attribution of uncertainty to sample variability or
 ## vice versa can bias the downstream analysis. This is particularly true when
 ## the underlying data are not shared.
-## Illustration: We illustrate this issue using simulated data from a normal 
+## Illustration: We illustrate this issue using simulated data from a gamma 
 ## distribution D. We first simulate some data, get the observed mean and sd,
 ## and the uncertainty around these estimates. We then compare the observed 
 ## data with that simulated with the erroneous interpretation of the uncertainty.
 
+library(epitrix)
 library(ggplot2)
 library(purrr)
 
 ### Setting up the data simulation
 set.seed(1)
-mean_delay <- 15
-sd_delay <- 5
-
-sample_size <- list(small = 10, large = 1000)
+mean_delay <- 5
+sd_delay <- 3
+params_gamma <- gamma_mucv2shapescale(mu = mean_delay, cv = sd_delay / mean_delay)
+sample_size <- list(small = 20, large = 100)
 samples <- map(
-  sample_size, ~rnorm(.x, mean = mean_delay, sd = sd_delay)
+  sample_size, ~rgamma(.x, shape = params_gamma$shape, scale = params_gamma$scale)
 )
 
 obs_mu <- map_dbl(samples, mean)
 obs_sd <- map_dbl(samples, sd)
 
-## Precision of estimates; assume normality so that we can use the exact formula
-## precision of the mean: standard error i.e. sd / sqrt(n)
-## See following useful reference for SE of the SD
-## Standard errors:
-## A review and evaluation of standard error estimators using Monte Carlo simulations
-## Bradley Harding, Christophe Tremblay, Denis Cousineau
-## The Quantitative Methods for Psychology 2014, Vol 10, No 2, First page 107
-precision_mu <- map2_dbl(obs_sd, sample_size, ~.x / sqrt(.y))
-precision_sd <- map2_dbl(obs_sd, sample_size, ~ .x / sqrt(2 * (.y - 1)))
+## Bootstrap to find the distribution of the mean and sd
+n_boot <- 100
+boot_samples <- map(samples, ~ replicate(n_boot, sample(.x, replace = TRUE)))
+## Each element of this list is a matrix with 1000 rows and 10000 columns
+## That is, each row is a bootstrap sample of the original data
+boot_means <- map(boot_samples, colMeans)
+boot_sds <- map(boot_samples, ~ apply(.x, 2, sd))
+## Precision of estimates; 
+precision_mu <- map(boot_means, sd)
+precision_sd <- map(boot_sds, sd)
 
-## Treat precision_mu as sample SD; in downstream analysis, sample size will
+## Treat precision_mu as sample SD; assume large sample size in downstream analysis
 ## probably be large.
-wrong_sample <- rnorm(sample_size$large, mean = mean(.x), sd = .y)
+wrong_sample <- map2(
+ obs_mu, precision_mu, function(x, y) {
+    params <- gamma_mucv2shapescale(mu = x, cv = y / x)
+    rgamma(1000, shape = params$shape, scale = params$scale)
+ }
+) 
 
-wrong_sample_means <- map_dbl(wrong_samples, mean)
+ggplot() + 
+  geom_density(aes(x = samples$small), fill = "blue", alpha = 0.5, col = NA) +
+geom_density(aes(x = wrong_sample$small), fill = "red", alpha = 0.5, col = NA)
+
