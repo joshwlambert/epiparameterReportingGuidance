@@ -53,3 +53,25 @@ plot(ecdf(samples1),xlab="Time",ylab="Cumulative density",main="",col="blue")
 lines(ecdf(samples2),col="red")
 legend(60, 0.2, legend=c("Period 1", "Period 2"),
        col=c("blue", "red"), lty=1:1, cex=0.8)
+
+
+
+
+
+#### write up
+#Example use case: estimating the upper quantile of the incubation period distribution
+#The incubation period, defined as the time between infection and the development of symptoms, is an important epidemiological quantity for establishing guidance on the duration of contact tracing of identified cases, as well as the duration of  isolation or quarantine for subsequently identified contacts. It is critical that the duration of isolation mitigates the risk of onward transmission, but does not extend any longer than necessary due to the costs, both financial and social, associated with isolation. 
+#The incubation period is typically presented as a probability distribution, summarised by a mean and estimate of the variability (most commonly standard deviation), rather than the full distribution. However, this can make estimation of the upper quantile of this distribution, the quantity that is used to guide the aforementioned contact tracing and isolation policies, difficult.
+#Consider the following example:
+#
+#                     Period 1               Period 2
+#Mean (Mean, 95% CI) 10.3 (9.9 - 10.7) 11.8 (11.0 - 12.7)
+#SD (Mean, 95% CI) 8.2 (7.8 - 8.6) 9.5 (8.7 - 10.5)
+#
+#Using the method of moments for the gamma distribution, the shape (alpha) and rate (beta) parameters for period 1 are calculated as 1.58 and 0.15, respectively. Parameterising a gamma distribution according to these parameters corresponds to a 95% quantile of 26 days. However, it is not possible to obtain any uncertainty around this estimate without the authors having provided the full set of samples used to generate these estimates.
+#Under the same method, the upper 95% quantile for period 2 is 30 days (shape = 1.54; rate = 0.13). 
+#Don’t think this would impact on being able to test for statistical significance between the two? Which is what I was hoping to do with the 2 different periods
+
+
+
+
