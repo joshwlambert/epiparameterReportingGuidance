@@ -77,11 +77,12 @@ Here we focus on the bias caused by badly reported epidemiological parameters on
 
 Many distributions have standard parameterisations. In other words, they have one, two or in some cases three parameters that are denoted by a name and often have a greek letter for shorthand. An example of this is the Gamma distribution which has the parameterisation shape ($\alpha$) and rate ($\beta$). However, there are often alternative parameterisations, for the Gamma distribution this is shape ($k$) and scale ($\theta$). If left unspecified, the reported parameters may correspond to different parameters depending on interpretation. Another example of ambiguous reporting of distribution estimates is when the parameters and summary statistics have similar names. This is the case for the lognormal distribution, whose common parameterisation is meanlog ($\mu$) and sdlog ($\sigma$) and common summary statistics reported for a distribution are mean and standard deviation (sd), this is further confused as both use the same greek letters. Therefore, it is possible to mistake the reporting of one set of these for the other. Both types of misinterpretation outlined here can result in substantial differences in the distributions (Figure 1).
 
-_Guidance_: 
-
+::: {.callout-note title="_Guidance_"}
 * Provide the formula for the Probability Density Function (PDF), or Probability Mass Function (PMF) if discrete, in the text or supplementary material.
 * Clearly report which distribution parameterisation was used to estimate parameters and provide parameter names in the text. 
 * Share code used to estimate parameter(s) for others to reproduce and audit methods.
+:::
+
 
 {{< embed use_cases/dist_params.qmd#fig-dist-params >}}
 
