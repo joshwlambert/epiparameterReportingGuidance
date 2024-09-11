@@ -49,7 +49,6 @@ keywords:
   - reporting guidelines
 date: last-modified
 bibliography: references.bib
-mainfont: Charter
 ---
 
 {{< include paper/abstract.qmd >}}
