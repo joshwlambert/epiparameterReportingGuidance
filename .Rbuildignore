@@ -2,3 +2,15 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^_extensions$
+^_freeze$
+^_manuscript$
+^_quarto.yml$
+^index.qmd$
+^index_files$
+^paper$
+^plos2015.bst$
+^references.bib$
+^use_cases$
+^.quarto$
