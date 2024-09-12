@@ -352,7 +352,8 @@ on the reuse of epidemiological parameters by those involved in epidemic
 or humanitarian response. For guidance on methodologies to use when
 inferring delay distributions see
 \citet{parkEstimatingEpidemiologicalDelay2024} and
-\citet{charnigaBestPracticesEstimating2024}.
+\citet{charnigaBestPracticesEstimating2024}, when inferring the
+reproduction number see \citet{gostic2022} and \citet{abbott2020}.
 
 Here we focus on the bias caused by badly reported epidemiological
 parameters on simple epidemic methods, sometimes referred to as outbreak
@@ -393,7 +394,9 @@ to mistake the reporting of one set of these for the other. Both types
 of misinterpretation outlined here can result in substantial differences
 in the distributions (Figure 1).
 
-\emph{Guidance}:
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-note-color-frame, arc=.35mm, leftrule=.75mm, opacityback=0, bottomrule=.15mm, breakable, left=2mm, colback=white]
+
+\vspace{-3mm}\textbf{\emph{Guidance}}\vspace{3mm}
 
 \begin{itemize}
 \tightlist
@@ -408,6 +411,8 @@ in the distributions (Figure 1).
   Share code used to estimate parameter(s) for others to reproduce and
   audit methods.
 \end{itemize}
+
+\end{tcolorbox}
 
 \begin{figure}[H]
 
@@ -449,7 +454,7 @@ epidemiological parameters.}
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://joshwlambert.github.io/epiparameterReportingGuidance/use_cases/dist_params.embed-preview.html\#cell-fig-dist-params}{Define
+\href{https://joshwlambert.github.io/epiparameterReportingGuidance/use_cases/dist_params-preview.html\#cell-fig-dist-params}{Define
 the x values for the plot}}
 
 \paragraph{Parameter estimates vs summary
@@ -500,7 +505,7 @@ findings in their own work.
   matches the data of input of the model.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, rightrule=.15mm, leftrule=.75mm, left=2mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, bottomrule=.15mm, opacityback=0, colback=white, arc=.35mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-tip-color-frame, arc=.35mm, leftrule=.75mm, opacityback=0, bottomrule=.15mm, breakable, left=2mm, colback=white]
 
 \vspace{-3mm}\textbf{Use case: Severity}\vspace{3mm}
 
