@@ -1,0 +1,98 @@
+---
+title: "CFR Truncation"
+author: "Gina Cuomo-Dannenburg"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introducing the problem
+During an outbreak of an infectious disease, a key challenge is in accurately estimating the severity of disease. Severity of an infectious disease outbreak is not only pathogen and strain specific, but is also affected by other factors such as access to healthcare, careseeking behaviour, demography, pre-existing immunity among other factors [cite]. Case fatality ratio (CFR) is a widely used measure of the severity of a pathogen in a specific outbreak, representing the proportion of cases expected to experience pathogen-induced mortality. CFR is calculated as follows:
+$$
+CFR = \frac{deaths}{cases}
+$$
+
+Importantly, the best practice when calculating the CFR is to use only cases with known outcomes in the denominator of the estimation. When estimating CFR in real-time during an ongoing outbreak, the number of deaths observed by a specific date is an underestimate because there will be cases already identified who will die, but have not died yet. Therefore, it is necessary to perform an adjustment for the delay between indentification of a case to the death of that individual in the estimation for CFR. 
+Based on data from the 1976 epidemic of Ebola in Uganda, we estimate both a naive and adjusted CFR using data until the 30th September 1976. Explicitly, a naive CFR divides observed deaths by observed cases with no adjustment for delays. We compare this against an adjusted CFR estimate which utilises an existing estimate of onset to death distribution [Barry et al., 2018]. (Do I need to add more details of the adjustment procedure??). The naive CFR estimation produces a lower estimate of CFR with less uncertainty compared to the adjusted CFR (Figure XA). 
+In the context of an Ebola outbreak, it is useful to be able to project deaths short term to estimate the number of teams required for safe burials of Ebola deaths. Using the same case data from the CFR estimation, we project cases for the next month. Then, by bootstrapping across the delay from onset to death and the uncertainty in both CFR estimations we project the number of observed deaths over time, and therefore the safe burial capacity required.
+
+
+```{r libraries echo=FALSE}
+## instructions for CRAN packages
+install.packages("rio")
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("magrittr")
+install.packages("outbreaks")
+install.packages("incidence")
+install.packages("distcrete")
+install.packages("epitrix")
+
+## instructions for github packages (latest versions)
+remotes::install_github("reconhub/epicontacts")
+remotes::install_github("reconhub/linelist")
+remotes::install_github("reconhub/earlyR")
+remotes::install_github("reconhub/projections")
+
+# load into work space
+library(cfr)
+library(dplyr)
+library(ggplot2)
+library(rio)
+library(magrittr)
+library(outbreaks)
+library(incidence)
+library(distcrete)
+library(epitrix)
+library(epicontacts)
+library(linelist)
+library(earlyR)
+library(projections)
+
+```
+
+```{r estimate-cfrs, echo=FALSE}
+# load data from the 1976 ebola epidemic --- would be good to find a dataset that is not in the vignette
+data("ebola1976")
+df_ebola_subset <- dplyr::filter(ebola1976, date <= "1976-09-30")
+
+# naive cfr
+naive <- cfr::cfr_static(
+  data = df_ebola_subset
+)
+
+# adjusting with onset to death distribution - Barry et al., 2018
+adjusted <- cfr::cfr_static(
+  df_ebola_subset,
+  delay_density = function(x) dgamma(x, shape = 2.40, scale = 3.33)
+)
+
+estimates <- rbind(naive, adjusted)
+estimates$method <- c("naive", "adjusted")
+estimates$method <- factor(estimates$method, levels =
+                             c("naive", "adjusted"))
+
+fig_A <- ggplot(estimates, aes(col = method)) + 
+  geom_point(aes(y = method, x = severity_estimate)) +
+  geom_errorbar(aes(xmin = severity_low, xmax = severity_high, y = method)) + theme_bw() +
+  xlim(c(0,1)) + labs(x = "CFR estimate (%)", y = "Method")
+
+```
+
+```{r project-cases, echo = FALSE}
+# based on a case study from RECON: https://www.reconlearn.org/post/simulated-evd-early
+# create an incidence object with the subsetted data
+dat <- as.Date(x = integer(0), origin = "1970-01-01")
+# convert to a linelist -- see if we can actually get a linelist for an outbreak instead
+for(i in 1:nrow(df_ebola_subset)) {
+  vec <- rep(df_ebola_subset$date[i], times = df_ebola_subset$cases[i])
+  dat <- c(dat, vec) 
+}
+i <- incidence(dat, interval = 1, last_date = max(df_ebola_subset$date))
+plot(i) + theme_bw()
+
+
+```
