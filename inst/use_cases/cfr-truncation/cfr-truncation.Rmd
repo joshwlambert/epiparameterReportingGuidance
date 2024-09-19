@@ -55,13 +55,33 @@ library(projections)
 ```
 
 ```{r estimate-cfrs, echo=FALSE}
-# load data from the 1976 ebola epidemic --- would be good to find a dataset that is not in the vignette
-data("ebola1976")
-df_ebola_subset <- dplyr::filter(ebola1976, date <= "1976-09-30")
+# load linelist data - currently using simulated data but see if we can access real line list
+dat <- ebola_sim
+dat_subset <- ebola_sim$linelist %>% 
+  dplyr::filter(date_of_onset <= as.Date("2014-06-20"))
+
+# convert this into a format for the CFR package such that you have date, cases, and deaths
+dat_cases <- dat_subset %>% 
+  dplyr::group_by(date_of_hospitalisation) %>% 
+  dplyr::summarise(cases = n()) %>%
+  dplyr::rename(date = date_of_hospitalisation)
+dat_deaths <- dat_subset %>%
+  dplyr::filter(outcome == "Death") %>%
+  dplyr::group_by(date_of_outcome) %>%
+  dplyr::summarise(deaths = n()) %>%
+  dplyr::rename(date = date_of_outcome)
+dat_cfr <- data.frame(date = seq.Date(from = min(dat_subset$date_of_onset), 
+                                      to = as.Date("2014-06-20"),
+                                      by = "day")) %>% # fix dates with no cases reported
+  left_join(dat_cases, by = "date") %>%
+  left_join(dat_deaths, by = "date") %>%
+  dplyr::filter(is.na(date) == FALSE) %>%
+  dplyr::mutate(cases = if_else(is.na(cases),0, cases)) %>%
+  dplyr::mutate(deaths = if_else(is.na(deaths),0, cases)) 
 
 # naive cfr
 naive <- cfr::cfr_static(
-  data = df_ebola_subset
+  data = dat_cfr
 )
 
 # adjusting with onset to death distribution - Barry et al., 2018
