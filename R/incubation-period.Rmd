@@ -1,0 +1,60 @@
+---
+title: "Example use case: estimating the upper quantile of the incubation period distribution"
+output: html_document
+date: "2024-09-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r,include=FALSE}
+# notes from spreadsheet
+# characterise upper quantile e.g. 95% of incubation period to estimate the duration of contact tracing follow up
+# Can get a central estimate from the central estimate of mean and central estimate of sd but cannot get uncertainty around that
+
+## source: https://www.nejm.org/doi/suppl/10.1056/NEJMc1414992/suppl_file/nejmc1414992_appendix.pdf
+
+## Table S2
+## given a mean and SD with uncertainty around it
+## overall: mean 10.3 (9.9 - 10.7) SD 8.2 (7.8 - 8.6)
+
+## use method of moments to transform mean and SD into useable format
+shape <- function(mean,sd){mean^2/sd^2}
+rate <- function(mean,sd){mean/sd^2}
+
+## shape (alpha)
+alpha1 <- shape(mean = 10.3,sd = 8.2)
+
+## rate (beta)
+beta1 <- rate(mean = 10.3,sd = 8.2) 
+
+# estimate 95% quantile
+qgamma(p=0.95,shape = alpha1, rate = beta1) ## 26.38
+
+## alternative method: sample from gamma distribution and take upper quantile
+
+# sample from gamma distribution
+samples1 <- rgamma(n=10000, shape = alpha1, rate = beta1)
+
+# check that things behaving as we would expect
+mean(samples1)
+
+quantile(samples1,0.95) # 25.84
+
+## essentially both telling us 26 days but no uncertainty
+
+
+```
+
+The incubation period, defined as the time between infection and the development of symptoms, is an important epidemiological quantity for establishing guidance on the duration of contact tracing of identified cases, as well as the duration of  isolation or quarantine for subsequently identified contacts. It is critical that the duration of isolation mitigates the risk of onward transmission, but does not extend any longer than necessary due to the costs, both financial and social, associated with isolation.\
+The incubation period is typically presented as a probability distribution, summarised by a mean and estimate of the variability (most commonly standard deviation), rather than the full distribution. However, this can make estimation of the upper quantile of this distribution, the quantity that is used to guide the aforementioned contact tracing and isolation policies, difficult.\
+Consider the following example: \
+The incubation period is presented as a mean and standard deviation as so: \
+Mean: 10.3 (95% CI 9.9 - 10.7) \
+SD: 8.2 (95% CI 7.8 - 8.6) \
+Using the method of moments for the gamma distribution, the shape (alpha) and rate (beta) parameters for period 1 are calculated as `r round(alpha1,2)` and `r round(beta1,2)`, respectively. Parameterising a gamma distribution according to these parameters corresponds to a 95% quantile of `r round(qgamma(p=0.95,shape = alpha1, rate = beta1))` days. However, it is not possible to obtain any uncertainty around this estimate without the authors having provided the full set of samples used to generate these estimates.
+
+
+
