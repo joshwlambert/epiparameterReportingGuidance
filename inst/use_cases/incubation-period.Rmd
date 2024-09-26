@@ -5,9 +5,10 @@ date: "2024-09-23"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE)
 library(tidyverse)
 library(matrixStats)
+library(epiparameter)
 ```
 
 ```{r,include=FALSE}
@@ -20,10 +21,6 @@ library(matrixStats)
 ## Table S2 (Guinea)
 ## given a mean and SD with uncertainty around it
 ## overall: mean 12.6 (9.1 - 17.1) SD 13.1 (9.6 - 19.6)
-
-## use method of moments to transform mean and SD into useable format
-shape <- function(mean,sd){mean^2/sd^2}
-rate <- function(mean,sd){mean/sd^2}
 
 mean_c <- 12.6
 sd_c <- 13.1
@@ -51,10 +48,11 @@ for(i in 1:n_iter){
   sd_iter <- rnorm(n=1,mean=sd_c,sd=(sd_u-sd_l)/3.92)
   
   # generate parameters accordingly
-  alpha_iter <- shape(mean_iter,sd_iter)
-  beta_iter <- rate(mean_iter,sd_iter)
-  
-  samples[,i] <- rgamma(n=n_samples, shape = alpha_iter, rate = beta_iter)
+  param_iter <- convert_summary_stats_to_params(x="gamma",
+                                                mean=mean_iter,sd=sd_iter)
+
+  samples[,i] <- rgamma(n=n_samples, 
+                        shape = param_iter$shape, scale = param_iter$scale)
 }
 
 ## for plotting
@@ -67,18 +65,15 @@ samples_longer <- pivot_longer(data.frame(samples),cols=paste0("X",seq(1:n_iter)
 ## now we don't have the full set of samples and we try to generate the 95% quantile 
 
 ## shape (alpha)
-alpha1 <- shape(mean = mean_c,sd = sd_c)
-
-## rate (beta)
-beta1 <- rate(mean = mean_c,sd = sd_c) 
+param1 <- convert_summary_stats_to_params(x="gamma",mean=mean_c,sd=sd_c)
 
 # estimate 95% quantile
-qgamma(p=0.95,shape = alpha1, rate = beta1) ## 38.08
+qgamma(p=0.95,shape = param1$shape, scale = param1$scale) ## 38.08
 
 ## alternative method: sample from gamma distribution and take upper quantile
 
 # sample from gamma distribution
-samples1 <- rgamma(n=10000, shape = alpha1, rate = beta1)
+samples1 <- rgamma(n=10000, shape = param1$shape, scale = param1$scale)
 
 # check that things behaving as we would expect
 mean(samples1)
@@ -94,12 +89,33 @@ The incubation period is most typically presented as a probability distribution,
 Consider the following example. During a novel Ebola outbreak, the incubation period is estimated using a gamma distribution on just a small number of observations (due to the lack of testing and contact tracing). MCMC methods are used to obtain `r n_iter` realisations of a gamma distribution:
 
 ```{r,include=TRUE,echo=FALSE}
+# ggplot(samples_longer,
+#        aes(x=value,group=name))+
+#   geom_density(lwd=0.01,col="grey")+
+#   theme_bw()+
+#   labs(x="Day",y="Density",col="")+
+#   xlim(c(0,100))
+
+q95 <- mean(colQuantiles(samples,probs=0.95)) 
+l95 <- quantile(colQuantiles(samples,probs=0.95),0.025)
+u95 <- quantile(colQuantiles(samples,probs=0.95),0.975)
+
 ggplot(samples_longer,
        aes(x=value,group=name))+
-  geom_density(lwd=0.01,col="grey")+
+  stat_ecdf(geom = "step",col="grey")+
+  geom_hline(aes(yintercept=0.95),linetype="dashed")+ 
+  geom_point(aes(x=q95,y=0.95),col="blue",size=3)+
+  geom_linerange(aes(y=0.95,xmin=l95,xmax=u95),col="blue",lwd=1)+
   theme_bw()+
-  labs(x="Day",y="Density",col="")
+  labs(x="Day",y="Density",col="")+
+  xlim(c(0,150))+
+  ylim(c(0,1))
+
 ```
+
+
+
+
 
 This analysis has been repeated several times for this paper, corresponding to different locations and time periods. For sake of space and simplicity, the results per fit are presented in the typical fashion, as noted above: \
 Mean: `r round(mean(colMeans(samples)),2)` (95% CI `r round(quantile(colMeans(samples),0.025),2)` - `r round(quantile(colMeans(samples),0.975),2)`) \
@@ -107,7 +123,7 @@ SD: `r round(mean(colSds(samples)),2)` (95% CI `r round(quantile(colSds(samples)
 However, this omits critical information about the upper 95% quantile of the distribution, which from the figure, is highly variable across realisations. Specifically, this is estimated as: \
 95% quantile: `r round(mean(colQuantiles(samples,probs=0.95)),1)` (95% CI `r round(quantile(colQuantiles(samples,probs=0.95),0.025),1)` - `r round(quantile(colQuantiles(samples,probs=0.95),0.975),1)`) \
 which has substantial uncertainty. \
-In a future outbreak of a viral hemorrhagic fever, the public health authority in the affected country looks to the previous analysis to guide their quarantine policy. Using only the provided information (the mean and SD), it is possible to use method of moments for the gamma distribution to obtain estimates of  the shape (alpha) and rate (beta) parameters (`r round(alpha1,2)` and `r round(beta1,2)`, respectively). Parameterising a gamma distribution according to these parameters corresponds to a 95% quantile of `r round(qgamma(p=0.95,shape = alpha1, rate = beta1))` days. This recovers the central estimate above well. However, it is not possible to obtain any uncertainty around this estimate without the authors having provided the full set of samples used to generate these estimates. This may provide a false sense of certainty on which the quarantine policy is based, whereas there may be an argument to either extend or reduce this based on the considerable uncertainty estimated above.
+In a future outbreak of a viral hemorrhagic fever, the public health authority in the affected country looks to the previous analysis to guide their quarantine policy. Using only the provided information (the mean and SD), it is possible to use method of moments for the gamma distribution to obtain estimates of  the shape and scale parameters (`r round(param1$shape,2)` and `r round(param1$scale,2)`, respectively). Parameterising a gamma distribution according to these parameters corresponds to a 95% quantile of `r round(qgamma(p=0.95,shape = param1$shape, scale = param1$scale))` days. This recovers the central estimate above well. However, it is not possible to obtain any uncertainty around this estimate without the authors having provided the full set of samples used to generate these estimates. This may provide a false sense of certainty on which the quarantine policy is based, whereas there may be an argument to either extend or reduce this based on the considerable uncertainty estimated above.
 
 
 
