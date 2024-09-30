@@ -126,6 +126,13 @@
       ],
       "Hash": "543776ae6848fde2f48ff3816d0628bc"
     },
+    "binom": {
+      "Package": "binom",
+      "Version": "1.1-1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c2f4ef4ce8029c1131de4400bcabcbf7"
+    },
     "bit": {
       "Package": "bit",
       "Version": "4.0.5",
@@ -1062,6 +1069,16 @@
         "utils"
       ],
       "Hash": "5f7886e53a3b39d4a110c7bd7fce9164"
+    },
+    "matrixStats": {
+      "Package": "matrixStats",
+      "Version": "1.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "8885ffb1f46e820dede6b2ca9442abca"
     },
     "memoise": {
       "Package": "memoise",
