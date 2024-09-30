@@ -1,0 +1,60 @@
+**Example use case: the importance of clear reporting of seroprevalence estimates**
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(matrixStats)
+library(binom)
+options(scipen=999)
+```
+
+```{r,include=FALSE}
+# essentially we have a scenario in which the neutralisation tests are not reported with the correct denominator and it implies a higher seroprevalence than it actually is, which in turn could suggest a smaller susceptible population 
+
+# set up some numbers
+total_tests <- 5000
+positive_elisa <- 250
+positive_neutralisation <- 50
+
+## could then also talk about if this was just HCWs but that seems patronising?
+```
+
+Estimates of seroprevalence provide critical insights into the level of susceptibility within a population, in turn informing the implementation of control measures, including vaccinations (e.g. through the critical fraction requiring vaccination to control spread). \
+A novel coronavirus has been identified and is spreading throughout the population. A rapid seroprevalence study is undertaken to understand levels of immunity of the population. Initially, `r prettyNum(total_tests, big.mark = ",", scientific = FALSE)` tests are carried out via enzyme-linked immunoabsorbsent assay (ELISA), of which `r positive_elisa` are positive. This corresponds to a seroprevalence estimate of `r round(binom.confint(x = positive_elisa,n = total_tests,method="exact")$mean,3) * 100`% (95% exact binomial confidence intervals `r round(binom.confint(x = positive_elisa,n = total_tests,method="exact")$lower,3) * 100`% - `r round(binom.confint(x = positive_elisa,n = total_tests,method="exact")$upper,3) * 100`%). \
+However, it is known that ELISA assays can be prone to cross-reactivity with other coronaviruses, which are also in circulation in this population. Therefore, it is decided to undertake neutralisation tests, which are typically more sensitive, to provide further confidence in the level of population-immunity. Due to a limited budget, only `r 2*positive_elisa` tests can be re-tested with a neutralisation assay, and so all of the `r positive_elisa` positive tests and `r positive_elisa` of the `r prettyNum(total_tests - positive_elisa, big.mark = ",", scientific = FALSE)` negatives are selected randomly for further testing.\
+Of the `r 2*positive_elisa` samples sent for further testing, only `r positive_neutralisation` return as positive. For the neutralisation tests, in respect of the ELISA tests, this corresponds to a seroprevalence estimate of `r round(binom.confint(x = positive_neutralisation,n = 2*positive_elisa,method="exact")$mean,3) * 100`% (95% exact binomial confidence intervals `r round(binom.confint(x = positive_neutralisation,n = 2*positive_elisa,method="exact")$lower,3) * 100`% - `r round(binom.confint(x = positive_neutralisation,n = 2*positive_elisa,method="exact")$upper,3) * 100`%), which is notably higher than the seroprevalence obtained under ELISA only. \
+However, discounting the results of the `r prettyNum(total_tests - 2*positive_elisa, big.mark = ",", scientific = FALSE)` tests incorrectly inflates estimated seroprevalence, implying a higher level of immunity in the population than that which is indicated by this study as a whole. Looking at the positive neutralisation tests out of the total tests (ELISA and neutralisation), seroprevalence is estimated as `r round(binom.confint(x = positive_neutralisation,n = total_tests,method="exact")$mean,3) * 100`% (95% exact binomial confidence intervals `r round(binom.confint(x = positive_neutralisation,n = total_tests,method="exact")$lower,3) * 100`% - `r round(binom.confint(x = positive_neutralisation,n = total_tests,method="exact")$upper,3) * 100`%), again subtantially lower than suggested when using the neutralisation test denominator only. \
+
+```{r,include=FALSE}
+#look at why this matters
+
+# total population size
+pop_size <- 1000000
+# R0
+r0 <- 4
+# herd immunity threshold
+hit <- 1-1/r0
+# sero diff
+sero_diff <- binom.confint(x = positive_neutralisation,n = 2*positive_elisa,method="exact")$mean - binom.confint(x = positive_neutralisation,n = total_tests,method="exact")$mean 
+# CFR
+cfr <- 0.01
+# case hospitalisation ratio
+chr <- 0.2
+```
+
+Using the incorrect denominator could have important consequences for future planning and control strategies. Consider a population of `r prettyNum(pop_size, big.mark = ",", scientific = FALSE)` people. The basic reproduction number of this novel coronavirus is estimated at around `r r0`, implying a herd immunity threshold (HIT) of `r hit*100`%. \
+If it is (incorrectly) assumed that seroprevalence is `r round(binom.confint(x = positive_neutralisation,n = 2*positive_elisa,method="exact")$mean,3) * 100`%, this implies that `r prettyNum(round((hit - sero_diff)*pop_size), big.mark = ",", scientific = FALSE)` members of the population require immunity before herd immunity is reached. However, it is actually `r prettyNum(round((hit - binom.confint(x = positive_neutralisation,n = total_tests,method="exact")$mean )*pop_size), big.mark = ",", scientific = FALSE)` members of the population requiring immunity to reach this threshold (an additional `r prettyNum(round(sero_diff*pop_size), big.mark = ",", scientific = FALSE)` people) under the correctly specified seroprevalence estimate of `r round(binom.confint(x = positive_neutralisation,n = total_tests,method="exact")$mean,3) * 100`%. \
+If immunity were to be required through vaccination, then an additional `r prettyNum(round(sero_diff*pop_size), big.mark = ",", scientific = FALSE)` vaccines would be required. In the absence of a vaccine, e.g. if immunity were to be acquired via natural infection, assuming an overall case hospitalisation ratio (CHR) of `r chr*100`% and case fatality ratio (CFR) of `r cfr*100`%, this suggests an additional `r prettyNum(round(chr*sero_diff*pop_size), big.mark = ",", scientific = FALSE)` hospitalisations and `r round(cfr*sero_diff*pop_size)` deaths than could be expected under the assumption of a seroprevalence of `r round(binom.confint(x = positive_neutralisation,n = 2*positive_elisa,method="exact")$mean,3) * 100`%
+respectfully. In at least the case of hospitalisation, this may require further preparation at hospital-level and the implementation of surge capacity protocols.
+
+```{r,include=TRUE,echo=FALSE}
+### team, do we want a plot of something related to this?
+```
+
+
+
+
+
+
+
+
