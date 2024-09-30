@@ -15,27 +15,25 @@ $$
 CFR = \frac{deaths}{cases}
 $$
 
-Importantly, the best practice when calculating the CFR is to use only cases with known outcomes in the denominator of the estimation. When estimating CFR in real-time during an ongoing outbreak, the number of deaths observed by a specific date is an underestimate because there will be cases already identified who will die, but have not died yet. Therefore, it is necessary to perform an adjustment for the delay between indentification of a case to the death of that individual in the estimation for CFR. 
-Based on data from the 1976 epidemic of Ebola in Uganda, we estimate both a naive and adjusted CFR using data until the 30th September 1976. Explicitly, a naive CFR divides observed deaths by observed cases with no adjustment for delays. We compare this against an adjusted CFR estimate which utilises an existing estimate of onset to death distribution [Barry et al., 2018]. (Do I need to add more details of the adjustment procedure??). The naive CFR estimation produces a lower estimate of CFR with less uncertainty compared to the adjusted CFR (Figure XA). 
-In the context of an Ebola outbreak, it is useful to be able to project deaths short term to estimate the number of teams required for safe burials of Ebola deaths. Using the same case data from the CFR estimation, we project cases for the next month. Then, by bootstrapping across the delay from onset to death and the uncertainty in both CFR estimations we project the number of observed deaths over time, and therefore the safe burial capacity required.
-
-
+Importantly, the best practice when calculating the CFR is to use only cases with known outcomes in the denominator of the estimation. When estimating CFR in real-time during an ongoing outbreak, the number of deaths observed by a specific date is an underestimate because there will be cases already identified who will die, but have not died yet. Therefore, it is necessary to perform an adjustment for the delay between identification of a case to the death of that individual in the estimation for CFR. 
+Based on simulated data of an epidemic of Ebola (do we have access to real data we could use?), we estimate both a naive and adjusted CFR using data until a midpoint in the epidemic. Explicitly, a naive CFR divides observed deaths by observed cases with no adjustment for delays. We compare this against an adjusted CFR estimate which utilises an existing estimate of onset to death distribution [Barry et al., 2018]. (Do I need to add more details of the adjustment procedure??). The naive CFR estimation produces a lower estimate of CFR with less uncertainty compared to the adjusted CFR (Figure XA). 
 ```{r libraries echo=FALSE}
-## instructions for CRAN packages
-install.packages("rio")
-install.packages("ggplot2")
-install.packages("dplyr")
-install.packages("magrittr")
-install.packages("outbreaks")
-install.packages("incidence")
-install.packages("distcrete")
-install.packages("epitrix")
-
-## instructions for github packages (latest versions)
-remotes::install_github("reconhub/epicontacts")
-remotes::install_github("reconhub/linelist")
-remotes::install_github("reconhub/earlyR")
-remotes::install_github("reconhub/projections")
+# ## instructions for CRAN packages
+# install.packages("rio")
+# install.packages("ggplot2")
+# install.packages("dplyr")
+# install.packages("magrittr")
+# install.packages("outbreaks")
+# install.packages("incidence")
+# install.packages("distcrete")
+# install.packages("epitrix")
+# 
+# ## instructions for github packages (latest versions)
+# remotes::install_github("reconhub/epicontacts")
+# remotes::install_github("reconhub/linelist")
+# remotes::install_github("reconhub/earlyR")
+# remotes::install_github("reconhub/projections")
+# remotes::install_github('mrc-ide/epireview')
 
 # load into work space
 library(cfr)
@@ -51,6 +49,7 @@ library(epicontacts)
 library(linelist)
 library(earlyR)
 library(projections)
+library(epireview)
 
 ```
 
@@ -58,7 +57,7 @@ library(projections)
 # load linelist data - currently using simulated data but see if we can access real line list
 dat <- ebola_sim
 dat_subset <- ebola_sim$linelist %>% 
-  dplyr::filter(date_of_onset <= as.Date("2014-06-20"))
+  dplyr::filter(date_of_hospitalisation <= as.Date("2014-06-20"))
 
 # convert this into a format for the CFR package such that you have date, cases, and deaths
 dat_cases <- dat_subset %>% 
@@ -86,7 +85,7 @@ naive <- cfr::cfr_static(
 
 # adjusting with onset to death distribution - Barry et al., 2018
 adjusted <- cfr::cfr_static(
-  df_ebola_subset,
+  dat_cfr,
   delay_density = function(x) dgamma(x, shape = 2.40, scale = 3.33)
 )
 
@@ -103,16 +102,59 @@ fig_A <- ggplot(estimates, aes(col = method)) +
 ```
 
 ```{r project-cases, echo = FALSE}
-# based on a case study from RECON: https://www.reconlearn.org/post/simulated-evd-early
-# create an incidence object with the subsetted data
-dat <- as.Date(x = integer(0), origin = "1970-01-01")
-# convert to a linelist -- see if we can actually get a linelist for an outbreak instead
-for(i in 1:nrow(df_ebola_subset)) {
-  vec <- rep(df_ebola_subset$date[i], times = df_ebola_subset$cases[i])
-  dat <- c(dat, vec) 
-}
-i <- incidence(dat, interval = 1, last_date = max(df_ebola_subset$date))
-plot(i) + theme_bw()
+i <- incidence(dat_subset$date_of_onset, last_date = as.Date("2014-06-20"))
+plot(i, show_cases = TRUE) +
+  theme_bw() +
+  labs(title = sprintf("Epidemic curve as of the %s", as.Date("2014-06-20")))
+
+```
+In the context of an Ebola outbreak, it is useful to be able to project deaths short term to estimate the number of teams required for safe burials of Ebola deaths. Using the same case data from the CFR estimation, we project cases for the next month. Then, by bootstrapping across the delay from onset to death and the uncertainty in both CFR estimations we project the number of observed deaths over time, and therefore the safe burial capacity required. 
+To perform short-term forecasts of the epidemic requires a few stages of inference. First, we must estimate the transmissibility of the pathogen in the specific outbreak, the reproduction number $\mathrm{R}$. In this example, we use a branching process model based on methods presented previously by Cori et al. [Cori et al., 2013]. Daily incidence is modelled using a Poisson process with then defines a global force of infection. $X_t \approx \mathrm {Pois}(\lambda_t)$ where $X_t$ is the incidence, based on symptom onset on day $t$ and $\lambda_t$ is the force of infection. Utilising a discretised serial interval distribution, $w()$, we obtain the following form for $\lambda_t$:
+
+$$
+\lambda_t = \mathrm{R} * \sum_{s=1}^{t}X_sw(t-s)
+$$
+(Goal is to somehow replace this with real data vs this simulated data so going to use epireview for the SI)
+For the serial interval estimation, we use a serial interval estimate from a previous estimate of the serial interval in the West African Ebola epidemic (Jombart et al., 2020).
+
+```{r pull-si, echo = FALSE}
+ebola <- epireview::load_epidata("ebola")
+params <- ebola[["params"]]
+# forest_plot_serial_interval(params)
+
+si <- params %>%
+  dplyr::filter(first_author_surname == "Jombart") %>%
+  dplyr::filter(parameter_type == "Human delay - serial interval") # described by a mean and sd
+
+mean <- si$parameter_value
+variance <- si$parameter_uncertainty_single_value^2
+
+scale <- variance/mean
+shape <- mean^2/variance
+
+sim_si <- rgamma(n = 10000, shape = shape, scale = scale)
+si_disc <- epitrix::fit_disc_gamma(x = sim_si,
+                                   mu_ini = mean,
+                                   cv_ini = (sqrt(variance))/mean)
+si_disc$distribution
+
+```
+
+```{r estimate-Rt, echo = FALSE}
+# estimate R and forecast Rt for 30 days
+R <- earlyR::get_R(x = i, # incidence object
+                   si_mean = mean,
+                   si_sd = sqrt(variance))
+
+```
+```{r project-forwards, echo = FALSE}
+proj <- project(i, R = R$R_ml, 
+        si = si_disc$distribution, 
+        n_sim = 100, n_days = 30, R_fix_within = TRUE)
+
+plot(i) %>%
+  add_projections(proj, c(.1, .5, .9)) +
+  theme_bw()
 
 
 ```
