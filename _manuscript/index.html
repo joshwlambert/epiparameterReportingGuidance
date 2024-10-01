@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joshua W. Lambert">
+<meta name="author" content="Carmen Tamayo">
+<meta name="author" content="Sangeeta Bhatia">
+<meta name="author" content="Ruth McCabe">
+<meta name="author" content="Gina Cuomo-Dannenburg">
+<meta name="author" content="Adam Kucharski">
+<meta name="author" content="Anne Cori">
+<meta name="dcterms.date" content="2024-09-30">
+<meta name="keywords" content="epidemiological parameters, reporting guidelines">
+
+<title>Recommendations for reporting epidemiological parameters</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="citation_title" content="Recommendations for reporting epidemiological parameters">
+<meta name="citation_keywords" content="epidemiological parameters,reporting guidelines">
+<meta name="citation_author" content="Joshua W. Lambert">
+<meta name="citation_author" content="Carmen Tamayo">
+<meta name="citation_author" content="Sangeeta Bhatia">
+<meta name="citation_author" content="Ruth McCabe">
+<meta name="citation_author" content="Gina Cuomo-Dannenburg">
+<meta name="citation_author" content="Adam Kucharski">
+<meta name="citation_author" content="Anne Cori">
+<meta name="citation_publication_date" content="2024-09-30">
+<meta name="citation_cover_date" content="2024-09-30">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-09-30">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Marburg virus disease outbreaks, mathematical models, and disease parameters: A systematic review;,citation_author=Gina Cuomo-Dannenburg;,citation_author=Kelly McCain;,citation_author=Ruth McCabe;,citation_author=H Juliette T Unwin;,citation_author=Patrick Doohan;,citation_author=Rebecca K Nash;,citation_author=Joseph T Hicks;,citation_author=Kelly Charniga;,citation_author=Cyril Geismar;,citation_author=Ben Lambert;,citation_author=Dariya Nikitin;,citation_author=Janetta Skarp;,citation_author=Jack Wardle;,citation_author=Mara Kont;,citation_author=Sangeeta Bhatia;,citation_author=Natsuko Imai;,citation_author=Sabine Van Elsland;,citation_author=Anne Cori;,citation_author=Christian Morgenstern;,citation_author=Aaron Morris;,citation_author=Alpha Forna;,citation_author=Amy Dighe;,citation_author=Anne Cori;,citation_author=Arran Hamlet;,citation_author=Ben Lambert;,citation_author=Charlie Whittaker;,citation_author=Christian Morgenstern;,citation_author=Cyril Geismar;,citation_author=Dariya Nikitin;,citation_author=David Jorgensen;,citation_author=Ed Knock;,citation_author=Ettie Unwin;,citation_author=Gina Cuomo-Dannenburg;,citation_author=Hayley Thompson;,citation_author=Isobel Routledge;,citation_author=Janetta Skarp;,citation_author=Joseph Hicks;,citation_author=Keith Fraser;,citation_author=Kelly Charniga;,citation_author=Kelly McCain;,citation_author=Lily Geidelberg;,citation_author=Lorenzo Cattarino;,citation_author=Mara Kont;,citation_author=Marc Baguelin;,citation_author=Natsuko Imai;,citation_author=Nima Moghaddas;,citation_author=Patrick Doohan;,citation_author=Rebecca Nash;,citation_author=Ruth McCabe;,citation_author=Sabine Van Elsland;,citation_author=Sangeeta Bhatia;,citation_author=Sreejith Radhakrishnan;,citation_author=Zulma Cucunuba Perez;,citation_author=Jack Wardle;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_fulltext_html_url=https://linkinghub.elsevier.com/retrieve/pii/S1473309923005157;,citation_issue=5;,citation_doi=10.1016/S1473-3099(23)00515-7;,citation_issn=14733099;,citation_volume=24;,citation_journal_title=The Lancet Infectious Diseases;">
+<meta name="citation_reference" content="citation_title=Ebola virus disease mathematical models and epidemiological parameters: A systematic review;,citation_author=Rebecca K Nash;,citation_author=Sangeeta Bhatia;,citation_author=Christian Morgenstern;,citation_author=Patrick Doohan;,citation_author=David Jorgensen;,citation_author=Kelly McCain;,citation_author=Ruth McCabe;,citation_author=Dariya Nikitin;,citation_author=Alpha Forna;,citation_author=Gina Cuomo-Dannenburg;,citation_author=Joseph T Hicks;,citation_author=Richard J Sheppard;,citation_author=Tristan Naidoo;,citation_author=Sabine Van Elsland;,citation_author=Cyril Geismar;,citation_author=Thomas Rawson;,citation_author=Sequoia Iris Leuba;,citation_author=Jack Wardle;,citation_author=Isobel Routledge;,citation_author=Keith Fraser;,citation_author=Natsuko Imai-Eaton;,citation_author=Anne Cori;,citation_author=H Juliette T Unwin;,citation_publication_date=2024-08;,citation_cover_date=2024-08;,citation_year=2024;,citation_fulltext_html_url=https://linkinghub.elsevier.com/retrieve/pii/S1473309924003748;,citation_doi=10.1016/S1473-3099(24)00374-8;,citation_issn=14733099;,citation_journal_title=The Lancet Infectious Diseases;">
+<meta name="citation_reference" content="citation_title=Inference of epidemic dynamics in the COVID-19 era and beyond;,citation_author=Anne Cori;,citation_author=Adam Kucharski;,citation_publication_date=2024-09;,citation_cover_date=2024-09;,citation_year=2024;,citation_fulltext_html_url=https://linkinghub.elsevier.com/retrieve/pii/S1755436524000458;,citation_doi=10.1016/j.epidem.2024.100784;,citation_issn=17554365;,citation_volume=48;,citation_journal_title=Epidemics;">
+<meta name="citation_reference" content="citation_title=Outbreak analytics: A developing data science for informing the response to emerging pathogens;,citation_abstract=Despite continued efforts to improve health systems worldwide, emerging pathogen epidemics remain a major public health concern. Effective response to such outbreaks relies on timely intervention, ideally informed by all available sources of data. The collection, visualization and analysis of outbreak data are becoming increasingly complex, owing to the diversity in types of data, questions and available methods to address them. Recent advances have led to the rise of outbreak analytics , an emerging data science focused on the technological and methodological aspects of the outbreak data pipeline, from collection to analysis, modelling and reporting to inform outbreak response. In this article, we assess the current state of the field. After laying out the context of outbreak response, we critically review the most common analytics components, their inter-dependencies, data requirements and the type of information they can provide to inform operations in real time. We discuss some challenges and opportunities and conclude on the potential role of outbreak analytics for improving our understanding of, and response to outbreaks of emerging pathogens.This article is part of the theme issue ‘Modelling infectious disease outbreaks in humans, animals and plants: epidemic forecasting and control‘. This theme issue is linked with the earlier issue “Modelling infectious disease outbreaks in humans, animals and plants: approaches and important themes”Modelling infectious disease outbreaks in humans, animals and plants: approaches and important themes.;,citation_author=Jonathan A. Polonsky;,citation_author=Amrish Baidjoe;,citation_author=Zhian N. Kamvar;,citation_author=Anne Cori;,citation_author=Kara Durski;,citation_author=W. John Edmunds;,citation_author=Rosalind M. Eggo;,citation_author=Sebastian Funk;,citation_author=Laurent Kaiser;,citation_author=Patrick Keating;,citation_author=Olivier Le Polain De Waroux;,citation_author=Michael Marks;,citation_author=Paula Moraga;,citation_author=Oliver Morgan;,citation_author=Pierre Nouvellet;,citation_author=Ruwan Ratnayake;,citation_author=Chrissy H. Roberts;,citation_author=Jimmy Whitworth;,citation_author=Thibaut Jombart;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_fulltext_html_url=https://royalsocietypublishing.org/doi/10.1098/rstb.2018.0276;,citation_issue=1776;,citation_doi=10.1098/rstb.2018.0276;,citation_issn=0962-8436, 1471-2970;,citation_volume=374;,citation_journal_title=Philosophical Transactions of the Royal Society B: Biological Sciences;">
+<meta name="citation_reference" content="citation_title=A review of epidemiological parameters from Ebola outbreaks to inform early public health decision-making;,citation_abstract=AbstractThe unprecedented scale of the Ebola outbreak in West Africa has, as of 29 April 2015, resulted in more than 10,884 deaths among 26,277 cases. Prior to the ongoing outbreak, Ebola virus disease (EVD) caused relatively small outbreaks (maximum outbreak size 425 in Gulu, Uganda) in isolated populations in central Africa. Here, we have compiled a comprehensive database of estimates of epidemiological parameters based on data from past outbreaks, including the incubation period distribution, case fatality rate, basic reproduction number ( R0), effective reproduction number ( Rt) and delay distributions. We have compared these to parameter estimates from the ongoing outbreak in West Africa. The ongoing outbreak, because of its size, provides a unique opportunity to better understand transmission patterns of EVD. We have not performed a meta-analysis of the data, but rather summarize the estimates by virus from comprehensive investigations of EVD and Marburg outbreaks over the past 40 years. These estimates can be used to parameterize transmission models to improve understanding of initial spread of EVD outbreaks and to inform surveillance and control guidelines.;,citation_author=Maria D. Van Kerkhove;,citation_author=Ana I. Bento;,citation_author=Harriet L. Mills;,citation_author=Neil M. Ferguson;,citation_author=Christl A. Donnelly;,citation_publication_date=2015-05;,citation_cover_date=2015-05;,citation_year=2015;,citation_fulltext_html_url=https://www.nature.com/articles/sdata201519;,citation_issue=1;,citation_doi=10.1038/sdata.2015.19;,citation_issn=2052-4463;,citation_volume=2;,citation_journal_title=Scientific Data;">
+<meta name="citation_reference" content="citation_title=Lassa fever outbreaks, mathematical models, and disease parameters: A systematic review and meta-analysis;,citation_abstract=AbstractBackground Lassa fever, caused by Lassa virus (LASV), poses a significant public health threat in West Africa. Understanding the epidemiological parameters and transmission dynamics of LASV is crucial for informing evidence-based interventions and outbreak response strategies.Methods We conducted a systematic review (PROSPERO CRD42023393345) to compile and analyse key epidemiological parameters, mathematical models, and past outbreaks of LASV. Data were double extracted from published literature, focusing on past outbreaks, seroprevalence, transmissibility, epidemiological delays, and disease severity.FindingsWe found 157 publications meeting our inclusion criteria and extracted 374 relevant parameter estimates. Although LASV is endemic in West Africa, spatiotemporal coverage of recent seroprevalence estimates, ranging from 0.06% to 35%, was poor. Highlighting the uncertainty in LASV risk spatially. Similarly, only two basic reproduction number estimates at 1.13 and 1.19 were available. We estimated a pooled total random effect case fatality ratio of 33.1% (95% CI: 25.7 – 41.5, I 2 = 94%) and found potential variation in severity by geographic regions typically associated with specific LASV lineages. We estimated a pooled total random effect mean symptom-onset-to-hospital-admission delay of 8.3 days (95% CI: 7.4 – 9.3, I2 = 92%), but other epidemiological delays were poorly characterised.Interpretation Our findings highlight the relative lack of empirical LASV parameter estimates despite its high severity. Improved surveillance to capture mild cases and approaches that integrate rodent populations are needed to better understand LASV transmission dynamics. Addressing these gaps is essential for developing accurate mathematical models and informing evidence-based interventions to mitigate the impact of Lassa fever on public health in endemic regions.Funding UK Medical Research Council, National Institute for Health and Care Research, Academy of Medical Sciences, Wellcome, UK Department for Business, Energy, and Industrial Strategy, British Heart Foundation, Diabetes UK, Schmidt Foundation, Community Jameel, Royal Society, and Imperial College London.Research in ContextEvidence before this study We searched PubMed up to August 2, 2023 for ((lassa fever) or (lassa virus)) and (epidemiology or outbreak or (models not image) or transmissibility or severity or delays or (risk factors) or (mutation rate) or seroprevalence). We found ten systematic reviews. Three on ribavirin as a Lassa fever treatment, two on Lassa virus (LASV) vaccine candidates, and one each on historical importations of Lassa fever cases from West Africa to non-endemic countries, clinical characteristics for protocol development, and Lassa fever in pregnancy. Two systematically reviewed epidemiological parameters. One on basic reproduction number estimates which ranged from 1.1 to 1.8 for human-to-human and 1.5 to 1.7 for rodent-to-rodent transmission. However, no meta-analyses were conducted. The other focused on LASV infection case fatality ratios (CFRs): 29.7% (22.3–37.5) in humans and prevalence: 8.7% (95% confidence interval: 6.8– 10.8) in humans, 3.2% (1.9–4.6) in rodents, and 0.7% (0.0–2.3) in other mammals. There were no systematic reviews on LASV transmission models.Added value of this study We provide a comprehensive overview of published outbreaks, transmission models and epidemiological parameters for LASV. We highlight the sparsity of key epidemiological parameter estimates such as the serial interval or generation time. The discrepancy between the high overall severity and the high seroprevalence in the general population suggests a high proportion of infections are asymptomatic or only result in mild disease. Therefore, current surveillance systems may need refining to better characterise LASV transmission dynamics.Implications of all the available evidence Epidemiological models are useful tools for real-time analysis of outbreaks, assessing epidemic trajectories and the impact of interventions. Our study is a useful basis to inform future LASV models, but highlights uncertainties and knowledge gaps that need to be filled in LASV transmission and natural history. Future LASV studies will benefit from integrating human and rodent reservoir surveillance.;,citation_author=Patrick Doohan;,citation_author=David Jorgensen;,citation_author=Tristan M. Naidoo;,citation_author=Kelly McCain;,citation_author=Joseph T. Hicks;,citation_author=Ruth McCabe;,citation_author=Sangeeta Bhatia;,citation_author=Kelly Charniga;,citation_author=Gina Cuomo-Dannenburg;,citation_author=Arran Hamlet;,citation_author=Rebecca K. Nash;,citation_author=Dariya Nikitin;,citation_author=Thomas Rawson;,citation_author=Richard J. Sheppard;,citation_author=H. Juliette T. Unwin;,citation_author=Sabine Van Elsland;,citation_author=Anne Cori;,citation_author=Christian Morgenstern;,citation_author=Natsuko Imai-Eaton;,citation_publication_date=2024-03;,citation_cover_date=2024-03;,citation_year=2024;,citation_fulltext_html_url=http://medrxiv.org/lookup/doi/10.1101/2024.03.23.24304596;,citation_doi=10.1101/2024.03.23.24304596;">
+<meta name="citation_reference" content="citation_title=Best practices for estimating and reporting epidemiological delay distributions of infectious diseases using public health surveillance and healthcare data;,citation_abstract=Epidemiological delays, such as incubation periods, serial intervals, and hospital lengths of stay, are among key quantities in infectious disease epidemiology that inform public health policy and clinical practice. This information is used to inform mathematical and statistical models, which in turn can inform control strategies. There are three main challenges that make delay distributions difficult to estimate. First, the data are commonly censored (e.g., symptom onset may only be reported by date instead of the exact time of day). Second, delays are often right truncated when being estimated in real time (not all events that have occurred have been observed yet). Third, during a rapidly growing or declining outbreak, overrepresentation or underrepresentation, respectively, of recently infected cases in the data can lead to bias in estimates. Studies that estimate delays rarely address all these factors and sometimes report several estimates using different combinations of adjustments, which can lead to conflicting answers and confusion about which estimates are most accurate. In this work, we formulate a checklist of best practices for estimating and reporting epidemiological delays with a focus on the incubation period and serial interval. We also propose strategies for handling common biases and identify areas where more work is needed. Our recommendations can help improve the robustness and utility of reported estimates and provide guidance for the evaluation of estimates for downstream use in transmission models or other analyses.;,citation_author=Kelly Charniga;,citation_author=Sang Woo Park;,citation_author=Andrei R Akhmetzhanov;,citation_author=Anne Cori;,citation_author=Jonathan Dushoff;,citation_author=Sebastian Funk;,citation_author=Katelyn M Gostic;,citation_author=Natalie M Linton;,citation_author=Adrian Lison;,citation_author=Christopher E Overton;,citation_author=Juliet R C Pulliam;,citation_author=Thomas Ward;,citation_author=Simon Cauchemez;,citation_author=Sam Abbott;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://arxiv.org/abs/2405.08841;,citation_doi=10.48550/ARXIV.2405.08841;,citation_publisher=arXiv;">
+<meta name="citation_reference" content="citation_title=Estimating epidemiological delay distributions for infectious diseases;,citation_abstract=Abstract Understanding and accurately estimating epidemiological delay distributions is important for public health policy. These estimates directly influence epidemic situational awareness, control strategies, and resource allocation. In this study, we explore challenges in estimating these distributions, including truncation, interval censoring, and dynamical biases. Despite their importance, these issues are frequently overlooked in the current literature, often resulting in biased conclusions. This study aims to shed light on these challenges, providing valuable insights for epidemiologists and infectious disease modellers. Our work motivates comprehensive approaches for accounting for these issues based on the underlying theoretical concepts. We also discuss simpler methods that are widely used, which do not fully account for known biases. We evaluate the statistical performance of these methods using simulated exponential growth and epidemic scenarios informed by data from the 2014-2016 Sierra Leone Ebola virus disease epidemic. Our findings highlight that using simpler methods can lead to biased estimates of vital epidemiological parameters. An approximate-latent-variable method emerges as the best overall performer, while an efficient, widely implemented interval-reduced-censoring-and-truncation method was only slightly worse. Other methods, such as a joint-primary-incidence-and-delay method and a dynamic-correction method, demonstrated good performance under certain conditions, although they have inherent limitations and may not be the best choice for more complex problems. Despite presenting a range of methods that performed well in the contexts we evaluated, residual biases persisted, predominantly due to the simplifying assumption that the distribution of event time within the censoring interval follows a uniform distribution; instead, this distribution should depend on epidemic dynamics. However, in realistic scenarios with daily censoring, these biases appeared minimal. This study underscores the need for caution when estimating epidemiological delay distributions in real-time, provides an overview of the theory that practitioners need to keep in mind when doing so with useful tools to avoid common methodological errors, and points towards areas for future research.SummaryWhat was known prior to this paperImportance of accurate estimates: Estimating epidemiological delay distributions accurately is critical for model development, epidemic forecasts, and analytic decision support.Right truncation: Right truncation describes the incomplete observation of delays, for which the primary event already occurred but the secondary event has not been observed (e.g. infections that have not yet become symptomatic and therefore not been observed). Failing to account for the right truncation can lead to underestimation of the mean delay during real-time data analysis.Interval censoring: Interval censoring arises when epidemiological events occurring in continuous time are binned into time intervals (e.g., days or weeks). Double censoring of both primary and secondary events needs to be considered when estimating delay distributions from epidemiological data. Accounting for censoring in only one event can lead to additional biases.Dynamical bias: Dynamical biases describe the effects of an epidemic’s current growth or decay rate on the observed delay distributions. Consider an analogy from demography: a growing population will contain an excess of young people, while a shrinking population will contain an excess of older people, compared to what would be expected from mortality profiles alone. Dynamical biases have been identified as significant issues in real-time epidemiological studies.Existing methods: Methods and software to adjust for censoring, truncation, and dynamic biases exist. However, many of these methods have not been systematically compared, validated, or tested outside the context in which they were originally developed. Furthermore, some of these methods do not adjust for the full range of biases.What this paper addsTheory overview: An overview of the theory required to estimate distributions is provided, helping practitioners understand the underlying principles of the methods and the connections between right truncation, dynamical bias, and interval censoring.Review of methods: This paper presents a review of methods accounting for truncation, interval censoring, and dynamical biases in estimating epidemiological delay distributions in the context of the underlying theory.Evaluation of methods: Methods were evaluated using simulations as well as data from the 2014-2016 Sierra Leone Ebola virus disease epidemic.Cautionary guidance: This work underscores the need for caution when estimating epidemiological delay distributions, provides clear signposting for which methods to use when, and points out areas for future research.Practical guidance: Guidance is also provided for those making use of delay distributions in routine practice.Key findingsImpact of neglecting biases: Neglecting truncation and censoring biases can lead to flawed estimates of important epidemiological parameters, especially in real-time epidemic settings.Equivalence of dynamical bias and right truncation: In the context of a growing epidemic, right truncation has an essentially equivalent effect as dynamical bias. Typically, we recommend correcting for one or the other, but not both.Bias in common censoring adjustment: Taking the common approach to censoring adjustment of naively discretising observed delay into daily intervals and fitting continuous-time distributions can result in biased estimates.Performance of methods: We identified an approximate-latent-variable method as the best overall performer, while an interval-reduced-censoring-andtruncation method was resource-efficient, widely implemented, and performed only slightly worse.Inherent limitations of some methods: Other methods, such as jointly estimating primary incidence and the forward delay, and dynamic bias correction, demonstrated good performance under certain conditions, but they also had inherent limitations depending on the setting.Persistence of residual biases: Residual biases persisted across all methods we investigated, largely due to the simplifying assumption that the distribution of event time within the primary censoring interval follows a uniform distribution rather than one influenced by the growth rate. These are minimal if the censoring interval is small compared to other relevant time scales, as is the case for daily censoring with most human diseases.Key limitationsDifferences between right censoring and truncation: We primarily focus on right truncation, which is most relevant when the secondary events are easier to observe than primary events (e.g., symptom onset vs. infection)—in this case, we can’t observe the delay until the secondary event has occurred. In other cases, we can directly observe the primary event and wait for the secondary event to occur (e.g., eventual recovery or death of a hospitalized individual)—in this case, it would be more appropriate to use right censoring to model the unresolved delays. For simplicity, we did not cover the right censoring in this paper.Daily censoring process: Our work considered only a daily interval censoring process for primary and secondary events. To mitigate this, we investigated scenarios with short delays and high growth rates, mimicking longer censoring intervals with extended delays and slower growth rates.Deviation from uniform distribution assumption: We show that the empirical distribution of event times within the primary censoring interval deviated from the common assumption of a uniform distribution due to epidemic dynamics. This discrepancy introduced a small absolute bias based on the length of the primary censoring window to all methods and was a particular issue when delay distributions were short relative to the censoring window’s length. In practice, other biological factors, such as circadian rhythms, are likely to have a stronger effect than the growth rate at a daily resolution. Nonetheless, our work lays out a theoretical ground for linking epidemic dynamics to a censoring process. Further work is needed to develop robust methods for wider censoring intervals.Temporal changes in delay distributions: The Ebola case study showcased considerable variation in reporting delays across the epidemic timeline, far greater than any bias due to censoring or truncation. Further work is needed to extend our methods to address such issues.Lack of other bias consideration: The idealized simulated scenarios we used did not account for observation error for either primary or secondary events, possibly favouring methods that do not account for real-world sources of biases.Limited distributions and methods considered: We only considered lognormal distributions in this study, though our findings are generalizable to other distributions. Mixture distributions and non-parametric or hazard-based methods were not included in our assessment.Exclusion of fitting discrete-time distributions: We focused on fitting continuous-time distributions throughout the paper. However, fitting discretetime distributions can be a viable option in practice, especially at a daily resolution. More work is needed to compare inferences based on discrete-time distributions vs continuous-time distributions with daily censoring.Exclusion of transmission interval distributions: Our work primarily focused on inferring distributions of non-transmission intervals, leaving out potential complications related to dependent events. Additional considerations such as shared source cases, identifying intermediate hosts, and the possibility of multiple source cases for a single infectee were not factored into our analysis.;,citation_author=Sang Woo Park;,citation_author=Andrei R. Akhmetzhanov;,citation_author=Kelly Charniga;,citation_author=Anne Cori;,citation_author=Nicholas G. Davies;,citation_author=Jonathan Dushoff;,citation_author=Sebastian Funk;,citation_author=Katie Gostic;,citation_author=Bryan Grenfell;,citation_author=Natalie M. Linton;,citation_author=Marc Lipsitch;,citation_author=Adrian Lison;,citation_author=Christopher E. Overton;,citation_author=Thomas Ward;,citation_author=Sam Abbott;,citation_publication_date=2024-01;,citation_cover_date=2024-01;,citation_year=2024;,citation_fulltext_html_url=http://medrxiv.org/lookup/doi/10.1101/2024.01.12.24301247;,citation_doi=10.1101/2024.01.12.24301247;">
+<meta name="citation_reference" content="citation_title=Early Epidemiological Assessment of the Virulence of Emerging Infectious Diseases: A Case Study of an Influenza Pandemic;,citation_author=Hiroshi Nishiura;,citation_author=Don Klinkenberg;,citation_author=Mick Roberts;,citation_author=Johan A. P. Heesterbeek;,citation_editor=Jean Peccoud;,citation_publication_date=2009-08;,citation_cover_date=2009-08;,citation_year=2009;,citation_fulltext_html_url=https://dx.plos.org/10.1371/journal.pone.0006852;,citation_issue=8;,citation_doi=10.1371/journal.pone.0006852;,citation_issn=1932-6203;,citation_volume=4;,citation_journal_title=PLoS ONE;">
+<meta name="citation_reference" content="citation_title=Simulist: Simulate Disease Outbreak Line List and Contacts Data;,citation_abstract=Tools to simulate realistic raw case data for an epidemic in the form of line lists and contacts using a branching process. Simulated outbreaks are parameterised with epidemiological parameters and can have age structured populations, age-stratified hospitalisation and death risk and time-varying case fatality risk.;,citation_author=Joshua W. Lambert;,citation_author=Carmen Tamayo;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_fulltext_html_url=https://zenodo.org/doi/10.5281/zenodo.10471458;,citation_doi=10.5281/ZENODO.10471458;,citation_publisher=Zenodo;">
+<meta name="citation_reference" content="citation_title=Cfr: Estimate disease severity and case ascertainment;,citation_author=Pratik R. Gupte;,citation_author=Adam Kucharski;,citation_author=Tim Russell;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Recommendations for reporting epidemiological parameters</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliations</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Joshua W. Lambert <a href="mailto:joshua.lambert@lshtm.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-5218-3046" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        London School of Hygiene and Tropical Medicine
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Carmen Tamayo <a href="mailto:carmen.tamayo-cuartero@lshtm.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-4184-2864" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        London School of Hygiene and Tropical Medicine
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Sangeeta Bhatia <a href="mailto:s.bhatia@imperial.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-6525-101X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Imperial College London
+                      </p>
+                    <p class="affiliation">
+                        UK Health Security Agency
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Ruth McCabe <a href="mailto:ruth.mccabe17@imperial.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-6368-9103" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Imperial College London
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Gina Cuomo-Dannenburg <a href="mailto:g.cuomo-dannenburg18@imperial.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-6821-0352" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Imperial College London
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Adam Kucharski <a href="mailto:adam.kucharski@lshtm.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-8814-9421" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        London School of Hygiene and Tropical Medicine
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Anne Cori <a href="mailto:a.cori@imperial.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-8443-9162" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Imperial College London
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">September 30, 2024</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (plos)</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+    </div>
+
+
+    <div>
+      <div class="keywords">
+        <div class="block-title">Keywords</div>
+        <p>epidemiological parameters, reporting guidelines</p>
+      </div>
+    </div>
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#guidance" id="toc-guidance" class="nav-link" data-scroll-target="#guidance">Guidance</a>
+  <ul class="collapse">
+  <li><a href="#parameter-inference-reporting" id="toc-parameter-inference-reporting" class="nav-link" data-scroll-target="#parameter-inference-reporting">Parameter inference reporting</a></li>
+  <li><a href="#contextual-information-and-metadata" id="toc-contextual-information-and-metadata" class="nav-link" data-scroll-target="#contextual-information-and-metadata">Contextual information and metadata</a></li>
+  <li><a href="#open-science-and-reproducibility-to-enhance-reuse" id="toc-open-science-and-reproducibility-to-enhance-reuse" class="nav-link" data-scroll-target="#open-science-and-reproducibility-to-enhance-reuse">Open science and reproducibility to enhance reuse</a></li>
+  <li><a href="#epidemiological-parameter-use-and-disjoint-analysis-pipelines" id="toc-epidemiological-parameter-use-and-disjoint-analysis-pipelines" class="nav-link" data-scroll-target="#epidemiological-parameter-use-and-disjoint-analysis-pipelines">Epidemiological parameter use and disjoint analysis pipelines</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="paper/abstract-preview.html"><i class="bi bi-journal-code"></i>abstract.qmd</a></li><li><a href="use_cases/dist_params-preview.html"><i class="bi bi-journal-code"></i>Define the x values for the plot</a></li><li><a href="use_cases/seroprevalence-preview.html"><i class="bi bi-journal-code"></i>essentially we have a scenario in which the neutralisation tests are not reported with the correct denominator and it implies a higher seroprevalence than it actually is, which in turn could suggest a smaller susceptible population</a></li><li><a href="use_cases/uncertain_R-preview.html"><i class="bi bi-journal-code"></i>load finalsize</a></li><li><a href="LICENSE-preview.html"><i class="bi bi-journal-code"></i>MIT License</a></li><li><a href="use_cases/cfr_dist_params-preview.html"><i class="bi bi-journal-code"></i>Use case for reporting guidance paper #2- Mean of the sample reported</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+  
+
+
+<p>Epidemiological parameters are a necessity in understanding the spread of infectious disease; from the rate of transmission, to severity, to serology, these parameters underline our ability to quantify and respond to disease outbreaks. The estimation of epidemiological parameters has a long history in epidemiology and the models and methods applied have become more complex; and with this complexity comes the numerous ways parameters can be reported in the literature. Here we provide guidance on how to clearly communicate estimated epidemiological parameters, to maximise their secondary use and minimise possible human errors that come with extracting parameters from the literature and applying them in their own epidemiological analysis. Our aim is for future work that reports epidemiological parameters to be consistent, reproducible and comparable.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Epidemiological parameters are quantities that characterise the spread of infectious diseases, their epidemiological outcomes and temporal information on dynamics of disease progression and transmission <span class="citation" data-cites="coriInferenceEpidemicDynamics2024">(<a href="#ref-coriInferenceEpidemicDynamics2024" role="doc-biblioref">Cori and Kucharski 2024</a>)</span>. They are critical to understand epidemic and pandemic dynamics and respond accordingly <span class="citation" data-cites="polonskyOutbreakAnalyticsDeveloping2019">(<a href="#ref-polonskyOutbreakAnalyticsDeveloping2019" role="doc-biblioref">Polonsky et al. 2019</a>)</span>. Most epidemiological parameters take the form of distributions because there is inherent variability in the epidemiological characteristics being measured. An illustration is the delay from infection to symptom onset. The variability of individuals in immune response and variability of the infectious agent in pathology are two ways, among many others, that lead to some individuals having shorter time delay between infection and onset of symptoms. Due to most epidemiological parameters being described by distributional forms they are estimated by fitting distributions to epidemiological data on cases or contacts.</p>
+<p>It has become general practice that when epidemiological parameters are required, either for analyses of epidemiological case data or to make policy decisions like quarantine duration, that the literature is searched to find a suitable peer-reviewed publication reporting the parameter needed. However, this process has several limitations. The time requirement to search through papers to find the highest quality epidemiological parameter means that in time-limited scenarios, for example early in an outbreak when the situation is evolving rapidly and new data is continually gathered, a suboptimal parameter set may be extracted and used. This has lead to previous <em>ad hoc</em> reviews of epidemiological parameters for specific pathogens (e.g.&nbsp;Ebola <span class="citation" data-cites="vankerkhoveReviewEpidemiologicalParameters2015a">(<a href="#ref-vankerkhoveReviewEpidemiologicalParameters2015a" role="doc-biblioref">Van Kerkhove et al. 2015</a>)</span>). The choice of parameter is also likely to be somewhat subjective without a clear quality assurance framework to evaluate and compare different parameter estimates. The manual extraction of copying and pasting parameters out of the literature comes with the risk of discrepancies entering the calculations.</p>
+<p>Epidemiological parameters have been reported for many diseases and the data used to infer parameter estimates and the methods of inference vary.</p>
+<p>Efforts to compile a centralised database of epidemiological parameters have highlighted the variability and ambiguity in parameter reporting which can lead to uncertainty around what is being reported and how these epidemiological parameters can be applied in other epidemiological analyses <span class="citation" data-cites="cuomo-dannenburgMarburgVirusDisease2024 doohanLassaFeverOutbreaks2024 nashEbolaVirusDisease2024">(<a href="#ref-cuomo-dannenburgMarburgVirusDisease2024" role="doc-biblioref">Cuomo-Dannenburg et al. 2024</a>; <a href="#ref-doohanLassaFeverOutbreaks2024" role="doc-biblioref">Doohan et al. 2024</a>; <a href="#ref-nashEbolaVirusDisease2024" role="doc-biblioref">Nash et al. 2024</a>)</span>.</p>
+<p>This paper was motivated by several research groups independently attempting to compile a comprehensive library of epidemiological parameters which could serve as a public resource to easily search, filter and extract parameters. These groups gathered for a workshop convened by the World Health Organisation (WHO) Collaboratory in Spring 2024, in which a Global Repository of Epidemiological Parameters (GREP) was discussed, as well as ideas for guidance on reporting epidemiological parameters. The guidelines and examples of incorrect reporting and use were subsequently further developed and resulted in this paper.</p>
+<p>Our focus is on guidance for reporting epidemiological parameters from a variety of study types and estimation methodologies. We do not cover or advice on best practises for parameter estimation methods. There are several papers that address avoiding biases and pitfalls [<span class="citation" data-cites="kingAvoidableErrorsModelling2015">(<a href="#ref-kingAvoidableErrorsModelling2015" role="doc-biblioref"><strong>kingAvoidableErrorsModelling2015?</strong></a>)</span>; brittonEstimationEmergingEpidemics2019a]. Specificall for guidance on methodologies when inferring delay distributions see <span class="citation" data-cites="parkEstimatingEpidemiologicalDelay2024">Park et al. (<a href="#ref-parkEstimatingEpidemiologicalDelay2024" role="doc-biblioref">2024</a>)</span> and <span class="citation" data-cites="charnigaBestPracticesEstimating2024">Charniga et al. (<a href="#ref-charnigaBestPracticesEstimating2024" role="doc-biblioref">2024</a>)</span>, and when inferring the reproduction number see <span class="citation" data-cites="gosticPracticalConsiderationsMeasuring2020a">(<a href="#ref-gosticPracticalConsiderationsMeasuring2020a" role="doc-biblioref"><strong>gosticPracticalConsiderationsMeasuring2020a?</strong></a>)</span> and abbottEstimatingTimevaryingReproduction2020. We focus on the reporting of epidemiological parameters post-inference and the benefits of reporting standardisation on the reuse of parameters by those involved in epidemic or humanitarian response.</p>
+<p>We classify bad parameter reporting into two groups: 1) <em>information loss</em> and 2) <em>ambiguous reporting</em>. Information loss is defined as the presentation or sharing of less than the entirety of the parameter estimates, metadata and contextual information. For example, if a method to infer a case fatality rate outputs the uncertainty of the risk but this is not reported either in the text and the method cannot be reproduced then this information is lost when others extract the parameters, i.e.&nbsp;only a subset of the full inference is shared. Ambiguous reporting can be either the ambiguous reporting of metrics, such as a <span class="math inline">\(X \pm Y\)</span> where <span class="math inline">\(Y\)</span> could be the standard deviation or standard error, or <span class="math inline">\(X (Y_1 - Y_2)\)</span> where the bounds <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> could be a confidence interval or credible interval when the inference framework is not reported. In both cases the secondary use of the parameters either is forced to make an assumption on what is reported, or does not utilise the information resulting in information loss.</p>
+<p>Here we focus on the bias caused by badly reported epidemiological parameters on simple epidemic methods, sometimes referred to as outbreak analytics <span class="citation" data-cites="polonskyOutbreakAnalyticsDeveloping2019">(sensu <a href="#ref-polonskyOutbreakAnalyticsDeveloping2019" role="doc-biblioref">Polonsky et al. 2019</a>)</span>, to showcase the erroneous conclusions that can arise when using parameter estimates from the literature. The biases produce here will likely extrapolate to more complex epidemiologilogical modelling. Reporting guidelines can ensure standardised reporting becomes more commonplace, which can make it easier to review, summarise and aggregate epidemiological parameters. We hope that this paper, alongside other works on reporting best practises in epidemiology <span class="citation" data-cites="pollettRecommendedReportingItems2021 charnigaBestPracticesEstimating2024">(<a href="#ref-pollettRecommendedReportingItems2021" role="doc-biblioref"><strong>pollettRecommendedReportingItems2021?</strong></a>; <a href="#ref-charnigaBestPracticesEstimating2024" role="doc-biblioref">Charniga et al. 2024</a>)</span> enhance the interoperability of research outputs and inputs.</p>
+</section>
+<section id="guidance" class="level2">
+<h2 class="anchored" data-anchor-id="guidance">Guidance</h2>
+<section id="parameter-inference-reporting" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-inference-reporting">Parameter inference reporting</h3>
+<section id="parameterisation-of-distributions" class="level4">
+<h4 class="anchored" data-anchor-id="parameterisation-of-distributions">Parameterisation of distributions</h4>
+<p>Many distributions have standard parameterisations. In other words, they have one, two or in some cases three parameters that are denoted by a name and often have a greek letter for shorthand. An example of this is the Gamma distribution which has the parameterisation shape (<span class="math inline">\(\alpha\)</span>) and rate (<span class="math inline">\(\beta\)</span>). However, there are often alternative parameterisations, for the Gamma distribution this is shape (<span class="math inline">\(k\)</span>) and scale (<span class="math inline">\(\theta\)</span>). If left unspecified, the reported parameters may correspond to different parameters depending on interpretation. Another example of ambiguous reporting of distribution estimates is when the parameters and summary statistics have similar names. This is the case for the lognormal distribution, whose common parameterisation is meanlog (<span class="math inline">\(\mu\)</span>) and sdlog (<span class="math inline">\(\sigma\)</span>) and common summary statistics reported for a distribution are mean and standard deviation (sd), this is further confused as both use the same greek letters. Therefore, it is possible to mistake the reporting of one set of these for the other. Both types of misinterpretation outlined here can result in substantial differences in the distributions (Figure 1).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="_Guidance_">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<em>Guidance</em>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Provide the formula for the Probability Density Function (PDF), or Probability Mass Function (PMF) if discrete, in the text or supplementary material.</li>
+<li>Clearly report which distribution parameterisation was used to estimate parameters and provide parameter names in the text.</li>
+<li>Share code used to estimate parameter(s) for others to reproduce and audit methods.</li>
+</ul>
+</div>
+</div>
+<div class="quarto-embed-nb-cell">
+<div class="cell">
+<div id="fig-dist-params" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dist-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<div id="fig-dist-params-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-dist-params-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/use_cases-dist_params-fig-dist-params-output-1.png" class="lightbox" data-gallery="fig-dist-params" title="Figure&nbsp;1&nbsp;(a): Differences in distributions when misinterpreting the estimated parameters. (a) Two gamma distributions, the blue shows a gamma distribution with shape (\alpha) and rate (\beta) of 2, the red shows a gamma distribution with shape (k) and scale (\theta) of 2. The rate is the reciprocal of the scale (\beta = 1/\theta), but it is clear from the left hand plot that misinterpreting the parameter leads to a vastly different distribution density. (b) Two lognormal distributions, the orange shows the density of a lognormal distribution with meanlog (\mu) and sdlog (\sigma) of 0.5, and the green with the meanlog and sdlog of 1.87 and 1.00, respectively (these values are the conversion from meanlog and sdlog into mean and standard deviation). Again showing how misinterpreting the parameters can lead to differences in epidemiological parameters."><img src="index_files/figure-html/use_cases-dist_params-fig-dist-params-output-1.png" class="img-fluid figure-img" data-ref-parent="fig-dist-params"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dist-params-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Differences in distributions when misinterpreting the estimated parameters. (a) Two gamma distributions, the blue shows a gamma distribution with shape (<span class="math inline">\(\alpha\)</span>) and rate (<span class="math inline">\(\beta\)</span>) of 2, the red shows a gamma distribution with shape (<span class="math inline">\(k\)</span>) and scale (<span class="math inline">\(\theta\)</span>) of 2. The rate is the reciprocal of the scale (<span class="math inline">\(\beta\)</span> = 1/<span class="math inline">\(\theta\)</span>), but it is clear from the left hand plot that misinterpreting the parameter leads to a vastly different distribution density. (b) Two lognormal distributions, the orange shows the density of a lognormal distribution with meanlog (<span class="math inline">\(\mu\)</span>) and sdlog (<span class="math inline">\(\sigma\)</span>) of 0.5, and the green with the meanlog and sdlog of 1.87 and 1.00, respectively (these values are the conversion from meanlog and sdlog into mean and standard deviation). Again showing how misinterpreting the parameters can lead to differences in epidemiological parameters.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-dist-params-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-dist-params-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/use_cases-dist_params-fig-dist-params-output-2.png" class="lightbox" data-gallery="fig-dist-params" title="Figure&nbsp;1&nbsp;(b): "><img src="index_files/figure-html/use_cases-dist_params-fig-dist-params-output-2.png" id="fig-dist-params-2" class="img-fluid figure-img" data-ref-parent="fig-dist-params"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dist-params-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-dist-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="parameter-estimates-vs-summary-statistics" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-estimates-vs-summary-statistics">Parameter estimates vs summary statistics</h4>
+<p>Instead of reporting the parameter estimates for a parametric distribution, summary statistics may be provided. In some instances a set of summary statistics can be analytically converted into distribution parameters (the specific summary statistics that can be converted into parameters varies by distribution). In those cases where analytical conversion can be done there is no loss in parameter estimate precision, i.e.&nbsp;summary statistics are sufficient statistics. Commonly reported sufficient statistics are the mean and standard deviation or variance of a distribution. However, it can also be the case that summary statistics that cannot be analytically converted to distribution parameters are reported, for example the mean or median and the 95th percentiles of the distribution. In these cases, distribution parameters require a second estimation using a numerical conversion. Numerical conversion can introduce more uncertainty and potentially return erroneous estimates. Below we show an example of the bias and variance of distribution parameters when numerically converted from summary statistics… (see {epiparameter} R package article for full exploration of bias in numerical conversion).</p>
+<p>Epidemiological parameters can be dimensionless quantities, for example R0 or secondary attack rate, while others have units. It is especially critical for the accurate reuse of with dimensions parameters that the units are reported. For parameters with a temporal dimension, such as delay distributions, the unit of time ensures that distributions fitted to data on days or weeks can be clearly understood. Another example is viral load data that can be reported as Ct or log10 RNA copies/ml. Many epidemiological parameters will have conventional units, for example incubation period and serial interval in days, or population density in individuals/km, but if readers have to assume units then misinterpretation can have consequences for others that apply the findings in their own work.</p>
+<p><em>Guidance</em>:</p>
+<ul>
+<li>Report the estimated distribution parameters first and foremost before optionally reporting summary statistics. This will avoid any secondary estimation step which can introduce unwanted and unnecessary bias.</li>
+<li>If a parameter has a unit, report this with the estimates, ensuring it matches the data of input of the model.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Use case: Severity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Use case: Ambiguous reporting of onset-to-death delay distribution and erroneous CFR estimates</strong></p>
+<p>In a scenario in which the case fatality risk (CFR) needs to be calculated for an ongoing, growing disease outbreak an onset-to-death delay distribution is required to calculate an unbiased CFR estimate, due to some individuals being infected but theiry outcome (i.e recovery or death) is unknown <span class="citation" data-cites="nishiuraEarlyEpidemiologicalAssessment2009">Nishiura et al. (<a href="#ref-nishiuraEarlyEpidemiologicalAssessment2009" role="doc-biblioref">2009</a>)</span>.</p>
+<p>A line list of the current outbreak is available, but no estiates of the onset-to-death delay are available for this outbreak and there is not enough case data to reliably estimate it from the line list. Therefore a previously inferred onset-to-death distribution is searched and extracted from the literature for the same pathogen from a past outbreak.</p>
+<p>The paper reporting the onset-to-death states:</p>
+<blockquote class="blockquote">
+<p>“… the average duration between the time when symptoms first appeared and death of the patients was estimated. The mean onset-to-death delay was of 14.5 days, with a standard deviation of 6.7.”</p>
+</blockquote>
+<p>The ambiguous reporting of the esimates means the onset-to-death delay can be (mis)interpreted in several ways. The paper is reporting the summary statistics mean and standard deviation for a lognormal distribution they fitted to the data. The estimates could be misinterpreted as meanlog and sdlog do the lognormal distribution, or could be misinterpreted as the summary statistics of the raw data (i.e.&nbsp;sample statistics). The CFR calculation for an unbiased estimate requires a parametric probability density/mass function. Therefore, given the ambiguity we demonstrate the correct interpretation and three misinterpretations of the reported onset-to-death and show how the CFR varies as a result. We use the {simulist} and {cfr} R packages to simulate line list data and calculate the CFR, respectively <span class="citation" data-cites="lambertSimulistSimulateDisease2024">Lambert and Tamayo (<a href="#ref-lambertSimulistSimulateDisease2024" role="doc-biblioref">2024</a>)</span> and <span class="citation" data-cites="gupteCfrEstimateDisease2024">Gupte, Kucharski, and Russell (<a href="#ref-gupteCfrEstimateDisease2024" role="doc-biblioref">2024</a>)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The correct interpretation can analytically convert the mean and standard deviation to the lognormal distribution parameters (<span class="math inline">\(\mu\)</span> = 2.86, <span class="math inline">\(\sigma\)</span> = 0.53) and parameterise the onset-to-death, resulting in a CFR of 0.3042, or 30.42%. Misinterpreting the estimates to be the lognormal parameters results in an overestimated CFR of NA. Assuming that the reported estimates are sample summary statistics, the distribution can be assumed, here we test the assumption that it is a lognormal (correct assumption) and a gamma distribution (incorrect assumption). The assumed parametric distribution form can be used to simulate a sample and the same distribution can be fit to that sample to estimate the parameters. In the case of assuming a lognormal distribution the CFR is estimated as 0.2681, whereas assuming a gamma distribution results in a CFR of 0.2426. The estimated CFR is biased in both cases but more so when the distribution is assumed incorrectly.</p>
+</div>
+</div>
+</section>
+<section id="parameter-uncertainty-vs-sample-variability" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-uncertainty-vs-sample-variability">Parameter uncertainty vs sample variability</h4>
+<p>The reporting of distributions is to encapsulate the variability of epidemiological delays, transmission, severity and others. However, there is also uncertainty around the parameters estimated. If it is not clearly stated that a distribution was fit to the data, it can be unclear whether the uncertainty around the mean corresponds to variation in the epidemiological case data, i.e.&nbsp;differences between individuals resulting in a distribution, or to the confidence or credible interval around the estimated mean.</p>
+</section>
+<section id="reporting-inference-method" class="level4">
+<h4 class="anchored" data-anchor-id="reporting-inference-method">Reporting inference method</h4>
+<p>The inference method used to infer epidemiological parameters and the uncertainty that is coupled with those estimates is also important to report precisely for it to be used in downstream analyses. One common distinction that can be made between inference method is whether it uses Maximum likelihood estimation (MLE) or Bayesian estimation. The resulting uncertainty of parameters, confidence intervals (CI) for MLE and credible intervals (CrI) for Bayesian fitting, cannot be interpreted or applied interchangeably <span class="citation" data-cites="moreyFallacyPlacingConfidence2016">(<a href="#ref-moreyFallacyPlacingConfidence2016" role="doc-biblioref"><strong>moreyFallacyPlacingConfidence2016?</strong></a>)</span>. Therefore if wanting to propagate uncertainty in parameter estimates, incorrectly treating CI as CrI or vice versa will lead to bias.</p>
+<p>Reporting on Bayesian fitting also has several summary statistics to describe the central tendency of the inferred posterior sample, for example, mean, median, mode. It is beneficial for the specific central tendency statistic used to be explicitly stated.</p>
+<p><em>Guidance</em>:</p>
+<ul>
+<li>Report distribution parameters with uncertainty if available. This can be reporting the confidence interval (CI) or credible interval (CrI) making it clear</li>
+<li>When using Bayesian inference, specifying methods used for posterior distribution and making posterior sample openly available via data sharing platform, e.g., Zenodo, Data Dryad.</li>
+</ul>
+<p>The types of distributions commonly fit to estimate delay distributions, such as serial interval, onset-to-event and incubation period, are Gamma, lognormal and Weibull. These are used as they are strictly positive (sometimes offsets or other distributions are used to account for negative serial intervals (Prete Jr.&nbsp;et al., 2021)) and are right-skewed, meaning that most of the distribution mass (i.e.&nbsp;area under the curve) is the left of the mean (Figure 1). It is best practice to fit multiple distributions to the data and compare models using likelihoods, information criteria or likelihood ratio tests. By reporting these comparisons with each set of estimated parameters it allows others to use the distribution they choose while also being aware of the goodness-of-fit if choosing the non-best-fitting distribution.</p>
+<p><em>Guidance</em>:</p>
+<ul>
+<li>If multiple distributions are fit to the raw case data, report the goodness-of-fit (e.g.&nbsp;maximum likelihood, Akaike Information Criterion) and the parameter estimates of each distribution either in the main text or in the supplementary material.</li>
+</ul>
+</section>
+</section>
+<section id="contextual-information-and-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="contextual-information-and-metadata">Contextual information and metadata</h3>
+<p>Since pathogen transmission and spread is known to be affected by socioeconomic, demographic, and climatic factors, reporting relevant contextual information alongside parameter estimates is crucial to understand the circumstances in which these estimates were obtained. Doing so will allow external readers to make informed decisions about the generalisability of the reported parameters and usability in their own analyses.</p>
+<p>An important contextual element is detailed information about the sample population from which parameters were estimated, including factors such as the geographic location, age distribution, and comorbidities. This is particularly relevant in those studies where only a specific subset of the population was sampled, such as health-care workers, pregnant individuals, or immunocompromised patients.</p>
+<p>Other relevant details of the study, such as the type of design and sampling strategy, should not be overlooked, when reporting epidemiological parameters, as these provide relevant contextual information to assess the representativeness of the data and validity of the statistical methods applied. For instance, methods for estimating parameters like the serial interval require considering data collection methods, as different adjustments for biases are needed depending on whether data on transmission pairs was conducted prospectively or retrospectively (see section 1.5). The specific case definition used to estimate parameters should also be reported, where possible, given the range of clinical signs that many diseases exhibit at different stages of infection, which can have an impact on the estimation of parameters like the incubation period or delays from onset to outcome.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Use case: Seroprevalence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Example use case: the importance of clear reporting of seroprevalence estimates</strong></p>
+<p>Estimates of seroprevalence provide critical insights into the level of susceptibility within a population, in turn informing the implementation of control measures, including vaccinations (e.g.&nbsp;through the critical fraction requiring vaccination to control spread).<br>
+A novel coronavirus has been identified and is spreading throughout the population. A rapid seroprevalence study is undertaken to understand levels of immunity of the population. Initially, 5,000 tests are carried out via enzyme-linked immunoabsorbsent assay (ELISA), of which 250 are positive. This corresponds to a seroprevalence estimate of 5% (95% exact binomial confidence intervals 4.4% - 5.6%).<br>
+However, it is known that ELISA assays can be prone to cross-reactivity with other coronaviruses, which are also in circulation in this population. Therefore, it is decided to undertake neutralisation tests, which are typically more sensitive, to provide further confidence in the level of population-immunity. Due to a limited budget, only 500 tests can be re-tested with a neutralisation assay, and so all of the 250 positive tests and 250 of the 4,750 negatives are selected randomly for further testing.<br>
+Of the 500 samples sent for further testing, only 50 return as positive. For the neutralisation tests, in respect of the ELISA tests, this corresponds to a seroprevalence estimate of 10% (95% exact binomial confidence intervals 7.5% - 13%), which is notably higher than the seroprevalence obtained under ELISA only.<br>
+However, discounting the results of the 4,500 tests incorrectly inflates estimated seroprevalence, implying a higher level of immunity in the population than that which is indicated by this study as a whole. Looking at the positive neutralisation tests out of the total tests (ELISA and neutralisation), seroprevalence is estimated as 1% (95% exact binomial confidence intervals 0.7% - 1.3%), again subtantially lower than suggested when using the neutralisation test denominator only.<br>
+</p>
+<p>Using the incorrect denominator could have important consequences for future planning and control strategies. Consider a population of 1,000,000 people. The basic reproduction number of this novel coronavirus is estimated at around 4, implying a herd immunity threshold (HIT) of 75%.<br>
+If it is (incorrectly) assumed that seroprevalence is 10%, this implies that 660,000 members of the population require immunity before herd immunity is reached. However, it is actually 740,000 members of the population requiring immunity to reach this threshold (an additional 90,000 people) under the correctly specified seroprevalence estimate of 1%.<br>
+If immunity were to be required through vaccination, then an additional 90,000 vaccines would be required. In the absence of a vaccine, e.g.&nbsp;if immunity were to be acquired via natural infection, assuming an overall case hospitalisation ratio (CHR) of 20% and case fatality ratio (CFR) of 1%, this suggests an additional 18,000 hospitalisations and 900 deaths than could be expected under the assumption of a seroprevalence of 10% respectfully. In at least the case of hospitalisation, this may require further preparation at hospital-level and the implementation of surge capacity protocols.</p>
+</div>
+</div>
+<p>Where parameters are reported or inferred during an active outbreak, we recommend to provide information about the time into the outbreak since the first case was reported and epidemic phase at the time of the analysis, especially when inferring delay distributions (see section 1.5). Further contextual information is also relevant for a nuanced understanding of how parameter estimates may change throughout an outbreak, e.g., due to changes in containment measures, therapeutics and vaccination, or volume of testing. For instance, advancements in the therapeutic approach to critical care patients resulted in a significantly higher delay from onset to death for COVID-19 patients during the summer of 2020 (mean of 24.7 days), compared to the first wave of the pandemic (mean of 19.6 days) (Ward and Johnsen, 2021, PLoS).</p>
+<p>Contextual information about the disease’s causative agent should also be reported, including pathogen name, and, where applicable, its type, subtype and/or strain. This information is relevant, as the transmissibility, pathogenicity and severity of disease, and their resulting epidemiological parameters often vary across strains of the same pathogen. For instance, the incubation period for Influenza type A is reportedly longer on average than that of Influenza type B, with a median of 1.4 and 0.6 days, respectively (Lessler, 2009). If the causative agent is unknown to the authors, either due to it being a novel pathogen, or simply because this information is not available, this should be explicitly stated in the publication. Beyond details about the causative agent, authors should also specify the transmission routes that have been considered when estimating parameters. This is particularly crucial for zoonotic and vector-borne diseases, where explicit clarification is needed on whether the estimates account for human-to-human transmission only, or if animal-to-human or vector-to-human transmission is also accounted for.</p>
+<p><em>Guidance</em>:</p>
+<ul>
+<li>Provide demographic information about the population and for the sample that was used to estimate epidemiological parameters.</li>
+<li>Specify whether analyses were stratified by certain groups, e.g., by age, or conducted using data for the whole population.</li>
+<li>Indicate whether reported parameters were obtained during an ongoing outbreak and, if so, provide information on the epidemic phase and time since outbreak was first declared.</li>
+<li>Clearly state whether variant(s) of the pathogen of interest is known and, if so, report the name of the variant and how this was determined.</li>
+<li>Specify which transmission pathways of disease were considered, e.g., human-to-human only, or including animal-to-human transmission.</li>
+</ul>
+</section>
+<section id="open-science-and-reproducibility-to-enhance-reuse" class="level3">
+<h3 class="anchored" data-anchor-id="open-science-and-reproducibility-to-enhance-reuse">Open science and reproducibility to enhance reuse</h3>
+<p>The complexities involved in estimating and reporting epidemiological parameters mean that it is unlikely that all methodological aspects and considerations can be documented in the paper or even supplementary material. By sharing data and code it enables reproducibility and auditing of the methods used. Sharing the code used to infer an epidemiological parameter enables others to see which method, as well as any other packages that were used. There are several platforms that easily enable code sharing, most common are GitHub, GitLab and BitBucket. To release the software used and provide a unique identifier (e.g.&nbsp;DOI) services like Zenodo, Figshare and Dyrad, this provides a single referenceable snapshot of the code, removing any issue if the code changes on, for example GitHub. Following these and other good practices for code sharing will help others navigate and review the code (Wilson et al., 2017). Openly sharing code enables others to reproduce the estimates and verify the estimates. They may also be able to assess the quality of the methods with respect to the available data and possible bias-adjustments that may be required when working with real-time outbreak data (citation needed). Sharing the analysis code can also resolve ambiguities in parameter reporting. If the parameterisation of the distribution is unclear from the text (see Section 1) then by checking parameter arguments in the code clarifies their use.</p>
+<p>Sharing the data is as important as sharing the code. By data we mean the input data (i.e.&nbsp;outbreak case data) and output data (i.e.&nbsp;parameter estimates and fitting metadata). If possible the raw data used to fit a model to estimate an epidemiological parameter should be openly available. By sharing the raw data it enables reproducibility of the analysis used to estimate the epidemiological parameters, but also allows others to apply different models to the data.</p>
+<p>Openly sharing epidemiological data can be restricted by personal identifiable information (PII) and data usage restrictions. There are some methods available to enable reproducibility even when the raw data cannot be shared. Anonymisation, if the personal identifiable information (PII) is not required by the method to infer the epidemiological parameter then this information can be removed, de-identified or anonymised prior to uploading the data (citations needed). Mock or synthetic data can be generated which has the same characteristics as the empirical data. This enables the analysis to be reproduced while removing any risk of identification or leaking personal information.</p>
+<p>The epidemiological parameter output should also be shared in full when possible. Often if the epidemiological parameter are distribution parameters these will be reported in the text. But the estimates correlation matrix, variance-covariance matrix, convergence metrics (e.g.&nbsp;…) should be shared. For Bayesian analyses sharing the posterior distribution is most beneficial for reuse as it allows researchers to calculate whichever summary metric their use case requires (e.g.&nbsp;Highest Posterior Density (HPD) Interval).</p>
+</section>
+<section id="epidemiological-parameter-use-and-disjoint-analysis-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="epidemiological-parameter-use-and-disjoint-analysis-pipelines">Epidemiological parameter use and disjoint analysis pipelines</h3>
+<p>The aim of this paper has been to provide a set of reporting guidelines for epidemiological parameter, with the objective to make reusing them in other epidemiological analyses more reliable, with examples showcasing when analysis error can result from erroneous or ambiguous reporting. This argument is premised on the downstream epidemiological analysis being disjoint from the estimation of the epidemiological parameters, in other words the method that uses the parameters to estimate or infer another aspect of an outbreak does not estimate the parameters. An example of this is when an previously estimated generation time, or serial interval as a more commonly available replacement, is used to estimate the real-time reproduction number. If the data is available to jointly estimate the generation time or serial interval with the reproduction number, then this is the statistically optimal approach. However, for a variety of reasons, primarily model complexity of joint models leading to mathematical and computations simplification being required, the disjoint or 2-step analysis procedure is common (ref). Some models to offer joint estimation given sufficient data (ref). There have not been many studies exploring the statistical performance of joint versus disjoint estimation (check this sentence and find ref). There is another aspect to consider, whether a set of epidemiological parameters exists where the features of the data (e.g.&nbsp;sample size, collection procedure) make it more accurate than the available at hand. In this scenario even if a joint estimation framework is available and feasible, it might be better to choose estimated parameters. The contextual information of the data, such as demography, geography, and comorbidities of the sample, should also be considered in such a case as the two groups might not be epidemiologically equivalent. That is all to say that reporting guidelines are relevant due to the widespread use of disjoint estimation where clear, ambiguous reporting with coverage of key piece of statistical and contextual information are required.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+</section>
+<section id="references" class="level2 unnumbered">
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-charnigaBestPracticesEstimating2024" class="csl-entry" role="listitem">
+Charniga, Kelly, Sang Woo Park, Andrei R Akhmetzhanov, Anne Cori, Jonathan Dushoff, Sebastian Funk, Katelyn M Gostic, et al. 2024. <span>“Best Practices for Estimating and Reporting Epidemiological Delay Distributions of Infectious Diseases Using Public Health Surveillance and Healthcare Data.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2405.08841">https://doi.org/10.48550/ARXIV.2405.08841</a>.
+</div>
+<div id="ref-coriInferenceEpidemicDynamics2024" class="csl-entry" role="listitem">
+Cori, Anne, and Adam Kucharski. 2024. <span>“Inference of Epidemic Dynamics in the <span>COVID</span>-19 Era and Beyond.”</span> <em>Epidemics</em> 48 (September): 100784. <a href="https://doi.org/10.1016/j.epidem.2024.100784">https://doi.org/10.1016/j.epidem.2024.100784</a>.
+</div>
+<div id="ref-cuomo-dannenburgMarburgVirusDisease2024" class="csl-entry" role="listitem">
+Cuomo-Dannenburg, Gina, Kelly McCain, Ruth McCabe, H Juliette T Unwin, Patrick Doohan, Rebecca K Nash, Joseph T Hicks, et al. 2024. <span>“Marburg Virus Disease Outbreaks, Mathematical Models, and Disease Parameters: A Systematic Review.”</span> <em>The Lancet Infectious Diseases</em> 24 (5): e307–17. <a href="https://doi.org/10.1016/S1473-3099(23)00515-7">https://doi.org/10.1016/S1473-3099(23)00515-7</a>.
+</div>
+<div id="ref-doohanLassaFeverOutbreaks2024" class="csl-entry" role="listitem">
+Doohan, Patrick, David Jorgensen, Tristan M. Naidoo, Kelly McCain, Joseph T. Hicks, Ruth McCabe, Sangeeta Bhatia, et al. 2024. <span>“Lassa Fever Outbreaks, Mathematical Models, and Disease Parameters: A Systematic Review and Meta-Analysis.”</span> <a href="https://doi.org/10.1101/2024.03.23.24304596">https://doi.org/10.1101/2024.03.23.24304596</a>.
+</div>
+<div id="ref-gupteCfrEstimateDisease2024" class="csl-entry" role="listitem">
+Gupte, Pratik R., Adam Kucharski, and Tim Russell. 2024. <span>“Cfr: <span>Estimate</span> Disease Severity and Case Ascertainment.”</span>
+</div>
+<div id="ref-lambertSimulistSimulateDisease2024" class="csl-entry" role="listitem">
+Lambert, Joshua W., and Carmen Tamayo. 2024. <span>“Simulist: <span>Simulate</span> <span>Disease</span> <span>Outbreak</span> <span>Line</span> <span>List</span> and <span>Contacts</span> <span>Data</span>.”</span> Zenodo. <a href="https://doi.org/10.5281/ZENODO.10471458">https://doi.org/10.5281/ZENODO.10471458</a>.
+</div>
+<div id="ref-nashEbolaVirusDisease2024" class="csl-entry" role="listitem">
+Nash, Rebecca K, Sangeeta Bhatia, Christian Morgenstern, Patrick Doohan, David Jorgensen, Kelly McCain, Ruth McCabe, et al. 2024. <span>“Ebola Virus Disease Mathematical Models and Epidemiological Parameters: A Systematic Review.”</span> <em>The Lancet Infectious Diseases</em>, August, S1473309924003748. <a href="https://doi.org/10.1016/S1473-3099(24)00374-8">https://doi.org/10.1016/S1473-3099(24)00374-8</a>.
+</div>
+<div id="ref-nishiuraEarlyEpidemiologicalAssessment2009" class="csl-entry" role="listitem">
+Nishiura, Hiroshi, Don Klinkenberg, Mick Roberts, and Johan A. P. Heesterbeek. 2009. <span>“Early <span>Epidemiological</span> <span>Assessment</span> of the <span>Virulence</span> of <span>Emerging</span> <span>Infectious</span> <span>Diseases</span>: <span>A</span> <span>Case</span> <span>Study</span> of an <span>Influenza</span> <span>Pandemic</span>.”</span> Edited by Jean Peccoud. <em>PLoS ONE</em> 4 (8): e6852. <a href="https://doi.org/10.1371/journal.pone.0006852">https://doi.org/10.1371/journal.pone.0006852</a>.
+</div>
+<div id="ref-parkEstimatingEpidemiologicalDelay2024" class="csl-entry" role="listitem">
+Park, Sang Woo, Andrei R. Akhmetzhanov, Kelly Charniga, Anne Cori, Nicholas G. Davies, Jonathan Dushoff, Sebastian Funk, et al. 2024. <span>“Estimating Epidemiological Delay Distributions for Infectious Diseases.”</span> <a href="https://doi.org/10.1101/2024.01.12.24301247">https://doi.org/10.1101/2024.01.12.24301247</a>.
+</div>
+<div id="ref-polonskyOutbreakAnalyticsDeveloping2019" class="csl-entry" role="listitem">
+Polonsky, Jonathan A., Amrish Baidjoe, Zhian N. Kamvar, Anne Cori, Kara Durski, W. John Edmunds, Rosalind M. Eggo, et al. 2019. <span>“Outbreak Analytics: A Developing Data Science for Informing the Response to Emerging Pathogens.”</span> <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 374 (1776): 20180276. <a href="https://doi.org/10.1098/rstb.2018.0276">https://doi.org/10.1098/rstb.2018.0276</a>.
+</div>
+<div id="ref-vankerkhoveReviewEpidemiologicalParameters2015a" class="csl-entry" role="listitem">
+Van Kerkhove, Maria D., Ana I. Bento, Harriet L. Mills, Neil M. Ferguson, and Christl A. Donnelly. 2015. <span>“A Review of Epidemiological Parameters from <span>Ebola</span> Outbreaks to Inform Early Public Health Decision-Making.”</span> <em>Scientific Data</em> 2 (1): 150019. <a href="https://doi.org/10.1038/sdata.2015.19">https://doi.org/10.1038/sdata.2015.19</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
