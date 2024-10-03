@@ -92,6 +92,11 @@ Many distributions have standard parameterisations. In other words, they have on
 
 Instead of reporting the parameter estimates for a parametric distribution, summary statistics may be provided. In some instances a set of summary statistics can be analytically converted into distribution parameters (the specific summary statistics that can be converted into parameters varies by distribution). In those cases where analytical conversion can be done there is no loss in parameter estimate precision, i.e. summary statistics are sufficient statistics. Commonly reported sufficient statistics are the mean and standard deviation or variance of a distribution. However, it can also be the case that summary statistics that cannot be analytically converted to distribution parameters are reported, for example the mean or median and the 95th percentiles of the distribution. In these cases, distribution parameters require a second estimation using a numerical conversion. Numerical conversion can introduce more uncertainty and potentially return erroneous estimates. Below we show an example of the bias and variance of distribution parameters when numerically converted from summary statistics… (see {epiparameter} R package article for full exploration of bias in numerical conversion).
 
+::: {.callout-tip}
+## Use case: Incubation period
+{{< include use_cases/incubation_period.qmd >}}
+:::
+
 Epidemiological parameters can be dimensionless quantities, for example R0 or secondary attack rate, while others have units. It is especially critical for the accurate reuse of with dimensions parameters that the units are reported. For parameters with a temporal dimension, such as delay distributions, the unit of time ensures that distributions fitted to data on days or weeks can be clearly understood. Another example is viral load data that can be reported as Ct or log10 RNA copies/ml. Many epidemiological parameters will have conventional units, for example incubation period and serial interval in days, or population density in individuals/km, but if readers have to assume units then misinterpretation can have consequences for others that apply the findings in their own work.
 
 _Guidance_:

@@ -1,11 +1,6 @@
----
-title: "Example use case: estimating the upper quantile of the incubation period distribution"
-output: html_document
-date: "2024-09-23"
----
+**Example use case: estimating the upper quantile of the incubation period distribution**
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,warning = FALSE)
+```{r, include=FALSE}
 library(tidyverse)
 library(matrixStats)
 library(epiparameter)
@@ -113,10 +108,6 @@ ggplot(samples_longer,
 
 ```
 
-
-
-
-
 This analysis has been repeated several times for this paper, corresponding to different locations and time periods. For sake of space and simplicity, the results per fit are presented in the typical fashion, as noted above: \
 Mean: `r round(mean(colMeans(samples)),2)` (95% CI `r round(quantile(colMeans(samples),0.025),2)` - `r round(quantile(colMeans(samples),0.975),2)`) \
 SD: `r round(mean(colSds(samples)),2)` (95% CI `r round(quantile(colSds(samples),0.025),2)` - `r round(quantile(colSds(samples),0.975),2)`) \
@@ -124,10 +115,3 @@ However, this omits critical information about the upper 95% quantile of the dis
 95% quantile: `r round(mean(colQuantiles(samples,probs=0.95)),1)` (95% CI `r round(quantile(colQuantiles(samples,probs=0.95),0.025),1)` - `r round(quantile(colQuantiles(samples,probs=0.95),0.975),1)`) \
 which has substantial uncertainty. \
 In a future outbreak of a viral hemorrhagic fever, the public health authority in the affected country looks to the previous analysis to guide their quarantine policy. Using only the provided information (the mean and SD), it is possible to use method of moments for the gamma distribution to obtain estimates of  the shape and scale parameters (`r round(param1$shape,2)` and `r round(param1$scale,2)`, respectively). Parameterising a gamma distribution according to these parameters corresponds to a 95% quantile of `r round(qgamma(p=0.95,shape = param1$shape, scale = param1$scale))` days. This recovers the central estimate above well. However, it is not possible to obtain any uncertainty around this estimate without the authors having provided the full set of samples used to generate these estimates. This may provide a false sense of certainty on which the quarantine policy is based, whereas there may be an argument to either extend or reduce this based on the considerable uncertainty estimated above.
-
-
-
-
-
-
-
