@@ -249,7 +249,7 @@ window.Quarto = {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="paper/abstract-preview.html"><i class="bi bi-journal-code"></i>abstract.qmd</a></li><li><a href="use_cases/dist_params.embed-preview.html"><i class="bi bi-journal-code"></i>Define the x values for the plot</a></li><li><a href="use_cases/seroprevalence-preview.html"><i class="bi bi-journal-code"></i>essentially we have a scenario in which the neutralisation tests are not reported with the correct denominator and it implies a higher seroprevalence than it actually is, which in turn could suggest a smaller susceptible population</a></li><li><a href="inst/use_cases/incubation-period-preview.html"><i class="bi bi-journal-code"></i>incubation-period.Rmd</a></li><li><a href="use_cases/uncertain_R-preview.html"><i class="bi bi-journal-code"></i>load finalsize</a></li><li><a href="LICENSE-preview.html"><i class="bi bi-journal-code"></i>MIT License</a></li><li><a href="use_cases/incubation_period-preview.html"><i class="bi bi-journal-code"></i>notes from spreadsheet</a></li><li><a href="use_cases/cfr_dist_params-preview.html"><i class="bi bi-journal-code"></i>Use case for reporting guidance paper #2- Mean of the sample reported</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="paper/abstract-preview.html"><i class="bi bi-journal-code"></i>abstract.qmd</a></li><li><a href="use_cases/dist_params-preview.html"><i class="bi bi-journal-code"></i>Define the x values for the plot</a></li><li><a href="use_cases/seroprevalence-preview.html"><i class="bi bi-journal-code"></i>essentially we have a scenario in which the neutralisation tests are not reported with the correct denominator and it implies a higher seroprevalence than it actually is, which in turn could suggest a smaller susceptible population</a></li><li><a href="use_cases/uncertain_R-preview.html"><i class="bi bi-journal-code"></i>load finalsize</a></li><li><a href="LICENSE-preview.html"><i class="bi bi-journal-code"></i>MIT License</a></li><li><a href="use_cases/incubation_period-preview.html"><i class="bi bi-journal-code"></i>notes from spreadsheet</a></li><li><a href="use_cases/sample_variability_vs_uncertainty-preview.html"><i class="bi bi-journal-code"></i>Setting up the data simulation</a></li><li><a href="use_cases/cfr_dist_params-preview.html"><i class="bi bi-journal-code"></i>Use case for reporting guidance paper #2- Mean of the sample reported</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -360,10 +360,10 @@ Consider the following example. During a novel Ebola outbreak, the incubation pe
 </div>
 </div>
 <p>This analysis has been repeated several times for this paper, corresponding to different locations and time periods. For sake of space and simplicity, the results per fit are presented in the typical fashion, as noted above:<br>
-Mean: 13 (95% CI 8.97 - 17.59)<br>
-SD: 13.12 (95% CI 7.41 - 18.35)<br>
+Mean: 12.67 (95% CI 8.92 - 16.25)<br>
+SD: 13.13 (95% CI 8.93 - 18.14)<br>
 However, this omits critical information about the upper 95% quantile of the distribution, which from the figure, is highly variable across realisations. Specifically, this is estimated as:<br>
-95% quantile: 38.9 (95% CI 27.3 - 51.1)<br>
+95% quantile: 38.8 (95% CI 29.1 - 49.1)<br>
 which has substantial uncertainty.<br>
 In a future outbreak of a viral hemorrhagic fever, the public health authority in the affected country looks to the previous analysis to guide their quarantine policy. Using only the provided information (the mean and SD), it is possible to use method of moments for the gamma distribution to obtain estimates of the shape and scale parameters (0.93 and 13.62, respectively). Parameterising a gamma distribution according to these parameters corresponds to a 95% quantile of 39 days. This recovers the central estimate above well. However, it is not possible to obtain any uncertainty around this estimate without the authors having provided the full set of samples used to generate these estimates. This may provide a false sense of certainty on which the quarantine policy is based, whereas there may be an argument to either extend or reduce this based on the considerable uncertainty estimated above.</p>
 </div>
@@ -408,6 +408,30 @@ Use case: Severity
 <section id="parameter-uncertainty-vs-sample-variability" class="level4">
 <h4 class="anchored" data-anchor-id="parameter-uncertainty-vs-sample-variability">Parameter uncertainty vs sample variability</h4>
 <p>The reporting of distributions is to encapsulate the variability of epidemiological delays, transmission, severity and others. However, there is also uncertainty around the parameters estimated. If it is not clearly stated that a distribution was fit to the data, it can be unclear whether the uncertainty around the mean corresponds to variation in the epidemiological case data, i.e.&nbsp;differences between individuals resulting in a distribution, or to the confidence or credible interval around the estimated mean.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Use case: Sample variability versus uncertainty
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Issue: A measure of uncertainty is provided, but it is not clear whether this uncertainty is due to sample variability, or is an uncertainty around the estimator.</p>
+<p>Implication: Erronoeus attribution of uncertainty to sample variability or vice versa can bias the downstream analysis. This is particularly true when the underlying data are not shared.</p>
+<p>Illustration: We illustrate this issue using simulated data from a gamma distribution D. We first simulate some data, get the observed mean and sd, and the uncertainty around these estimates. We then compare the observed data with that simulated with the erroneous interpretation of the uncertainty.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="reporting-inference-method" class="level4">
 <h4 class="anchored" data-anchor-id="reporting-inference-method">Reporting inference method</h4>
@@ -940,7 +964,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

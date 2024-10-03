@@ -113,6 +113,11 @@ _Guidance_:
 
 The reporting of distributions is to encapsulate the variability of epidemiological delays, transmission, severity and others. However, there is also uncertainty around the parameters estimated. If it is not clearly stated that a distribution was fit to the data, it can be unclear whether the uncertainty around the mean corresponds to variation in the epidemiological case data, i.e. differences between individuals resulting in a distribution, or to the confidence or credible interval around the estimated mean. 
 
+::: {.callout-tip}
+## Use case: Sample variability versus uncertainty
+{{< include use_cases/sample_variability_vs_uncertainty.qmd >}}
+:::
+
 #### Reporting inference method
 
 The inference method used to infer epidemiological parameters and the uncertainty that is coupled with those estimates is also important to report precisely for it to be used in downstream analyses. One common distinction that can be made between inference method is whether it uses Maximum likelihood estimation (MLE) or Bayesian estimation. The resulting uncertainty of parameters, confidence intervals (CI) for MLE and credible intervals (CrI) for Bayesian fitting, cannot be interpreted or applied interchangeably [@moreyFallacyPlacingConfidence2016]. Therefore if wanting to propagate uncertainty in parameter estimates, incorrectly treating CI as CrI or vice versa will lead to bias.
