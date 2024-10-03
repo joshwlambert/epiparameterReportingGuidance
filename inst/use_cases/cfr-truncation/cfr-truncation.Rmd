@@ -34,6 +34,7 @@ Based on data of the first Ebola epidemic in the Democratic Republic of Congo in
 # remotes::install_github("reconhub/earlyR")
 # remotes::install_github("reconhub/projections")
 # remotes::install_github('mrc-ide/epireview')
+# remotes::install_github("epiverse-trace/cfr")
 
 # load into work space
 library(cfr)
@@ -58,7 +59,7 @@ library(epireview)
 data("ebola1976")
 dat <- ebola1976
 dat_subset <- dat %>%
-  dplyr::filter(date < as.Date("1976-10-01"))
+  dplyr::filter(date < as.Date("1976-09-20"))
 
 # naive cfr
 naive <- cfr::cfr_static(
