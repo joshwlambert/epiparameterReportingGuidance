@@ -10,13 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Introducing the problem
-During an outbreak of an infectious disease, a key challenge is in accurately estimating the severity of disease. Severity of an infectious disease outbreak is not only pathogen and strain specific, but is also affected by other factors such as access to healthcare, careseeking behaviour, demography, pre-existing immunity among other factors [cite]. Case fatality ratio (CFR) is a widely used measure of the severity of a pathogen in a specific outbreak, representing the proportion of cases expected to experience pathogen-induced mortality. CFR is calculated as follows:
+During an outbreak of an infectious disease, a key challenge is in accurately estimating the severity of disease. Severity of an infectious disease outbreak is not only pathogen and strain specific, but is also affected by other factors such as access to healthcare, careseeking behaviour, demography, pre-existing immunity, among other factors [cite]. Case fatality ratio (CFR) is a widely used measure of the severity of a pathogen in a specific outbreak, representing the proportion of cases expected to experience pathogen-induced mortality. CFR is calculated as follows:
 $$
 CFR = \frac{deaths}{cases}
 $$
 
 Importantly, the best practice when calculating the CFR is to use only cases with known outcomes in the denominator of the estimation. When estimating CFR in real-time during an ongoing outbreak, the number of deaths observed by a specific date is an underestimate because there will be cases already identified who will die, but have not died yet. Therefore, it is necessary to perform an adjustment for the delay between identification of a case to the death of that individual in the estimation for CFR. 
-Based on data of the first Ebola epidemic in the Democratic Republic of Congo in 1976, we estimate both a naive and adjusted CFR using data until a midpoint in the epidemic [Camacho et al., 2014]. Explicitly, a naive CFR divides observed deaths by observed cases with no adjustment for delays. We compare this against an adjusted CFR estimate which utilises an existing estimate of onset to death distribution [Barry et al., 2018]. The naive CFR estimation produces a lower estimate of CFR with less uncertainty compared to the adjusted CFR (Figure X). 
+Here, we utilise two existing estimates of CFR of Ebola from the same outbreak, one adjusted and one unadjusted (Rico et al., 2016). Based on simulated Ebola case data, we project forward an epidemic trajectory for an Ebola outbreak and estimate the expected number of deaths, depending on whether we utilise an adjusted or naive CFR in our secondary analysis.
+
+
+<!-- Based on data of the first Ebola epidemic in the Democratic Republic of Congo in 1976, we estimate both a naive and adjusted CFR using data until a midpoint in the epidemic [Camacho et al., 2014]. Explicitly, a naive CFR divides observed deaths by observed cases with no adjustment for delays. We compare this against an adjusted CFR estimate which utilises an existing estimate of onset to death distribution [Barry et al., 2018]. The naive CFR estimation produces a lower estimate of CFR with less uncertainty compared to the adjusted CFR (Figure X).  -->
 ```{r libraries echo=FALSE}
 # ## instructions for CRAN packages
 # install.packages("rio")
@@ -34,14 +37,12 @@ Based on data of the first Ebola epidemic in the Democratic Republic of Congo in
 # remotes::install_github("reconhub/earlyR")
 # remotes::install_github("reconhub/projections")
 # remotes::install_github('mrc-ide/epireview')
-# remotes::install_github("epiverse-trace/cfr")
-
 # load into work space
-library(cfr)
+# library(cfr)
 library(dplyr)
 library(ggplot2)
 library(rio)
-library(magrittr)
+# library(magrittr)
 library(outbreaks)
 library(incidence)
 library(distcrete)
@@ -54,53 +55,109 @@ library(epireview)
 
 ```
 
-```{r estimate-cfrs, echo=FALSE}
-# load linelist data - currently using simulated data but see if we can access real line list
-data("ebola1976")
-dat <- ebola1976
-dat_subset <- dat %>%
-  dplyr::filter(date < as.Date("1976-09-20"))
+```{r get-cfrs, echo=FALSE}
+ebola <- epireview::load_epidata(pathogen = "ebola")
 
-# naive cfr
-naive <- cfr::cfr_static(
-  data = dat_subset
-)
+cfrs <- ebola$params %>%
+  dplyr::filter(parameter_type == "Severity - case fatality rate (CFR)") %>%
+  dplyr::filter(first_author_surname == "Rico") %>%
+  dplyr::filter(population_location == "Conakry")
 
-# adjusting with onset to death distribution - Barry et al., 2018
-adjusted <- cfr::cfr_static(
-  dat_subset,
-  delay_density = function(x) dgamma(x, shape = 2.40, scale = 3.33)
-)
+naive_cfr <- cfrs %>%
+  dplyr::filter(cfr_ifr_method == "Naive")
+adjusted_cfr <- cfrs %>%
+  dplyr::filter(cfr_ifr_method == "Adjusted")
 
-estimates <- rbind(naive, adjusted)
-estimates$method <- c("naive", "adjusted")
-estimates$method <- factor(estimates$method, levels =
-                             c("naive", "adjusted"))
-
-fig_A <- ggplot(estimates, aes(col = method)) + 
-  geom_point(aes(y = method, x = severity_estimate*100)) +
-  geom_errorbar(aes(xmin = severity_low*100, xmax = severity_high*100, y = method)) + theme_bw() +
-  xlim(c(0,100)) + labs(x = "CFR estimate (%)", y = "Method")
 
 ```
 
-```{r real-CFR, echo = FALSE}
-
-# naive cfr
-cfr <- cfr::cfr_static(
-  data = dat
-)
-
-cfr$severity_estimate
-
-fig_A + geom_vline(xintercept = cfr$severity_estimate*100, linetype = 2) + 
-  # geom_area(xmin = cfr$severity_low*100, xmax = cfr$severity_high * 100,
-  #             ymin = -Inf, ymax = Inf, alpha = 0.1) +
-  annotate("text", x = 87, y = 2.5, label = "final CFR")
+```{r plot-cfr, echo = FALSE}
+ggplot(cfrs, aes(x = parameter_value, y = cfr_ifr_method)) + 
+  geom_point(aes(shape = cfr_ifr_method)) +
+  geom_errorbarh(aes(xmin = parameter_lower_bound, xmax = parameter_upper_bound)) + 
+  theme_bw() + xlim(c(0,100)) +
+  labs(x = "Case Fatality Ratio (%)", y = "Method") + 
+  guides(shape = guide_legend("Method"))
 
 ```
-Figure X: CFR estimations using data from the outbreak until 30 September 1976.
-This figure illustrates the estimation of the CFR using data until the midpoint of the epidemic. The y-axis represents the method used for calculation of the CFR, with the naive CFR involving dividing deaths by cases without any adjustments for delays. The adjusted CFR utilises the delays estimated previously [Barry et al., 2018]. Points illustrate the central estimate of CFR with respective methods, and the error bars show the 95% credible interval. The vertical dashed line shows the CFR based on the entire epidemic using all data available.
+Figure X: comparison of CFR estimates from Rico et al., 2016. Error bars represent the upper and lower bound of the CFR estimates with the adjusted and naive methodological approaches.
 
-If we now compare this against the CFR from the complete outbreak, we find that in order to obtain an accurate real-time estimation of CFR, adjustment for the delay from onset to outcome is necessary (Figure X). CFR is not just pathogen specific, but is specific to specific outbreaks due to the role of pathogen strain, healthcare capacity, pre-existing immunity and demography, among other factors [Garske et al., 2017]. An underestimate of CFR not only results in a lower projection of deaths from an infectious disease outbreak, but can influence the seriousness with which an infectious disease epidemic is treated and the intensity of the public health response. Accurate estimates of real-time CFR ensures more realistic projections of healthcare demand, hospital bed capacity, predicted numbers of burial teams required and is a useful measure of the severity of public health threat.
+```{r incidence-object}
+dat <- ebola_sim$linelist %>% 
+  dplyr::filter(date_of_onset <= as.Date("2014-10-01"))
+
+i <- incidence(dat$date_of_onset, last_date = as.Date("2014-10-01"))
+plot(i, show_cases = TRUE) +
+  theme_bw()
+
+```
+
+In the context of an Ebola outbreak, it is useful to be able to project deaths short term to estimate the number of teams required for safe burials of Ebola deaths. Using the same case data from the CFR estimation, we project cases for the next month. Then, by bootstrapping across the delay from onset to death and the uncertainty in both CFR estimations we project the number of observed deaths over time, and therefore the safe burial capacity required. 
+To perform short-term forecasts of the epidemic requires a few stages of inference. First, we must estimate the transmissibility of the pathogen in the specific outbreak, the reproduction number $\mathrm{R}$. In this example, we use a branching process model based on methods presented previously by Cori et al. [Cori et al., 2013]. Daily incidence is modelled using a Poisson process with then defines a global force of infection. $X_t \approx \mathrm {Pois}(\lambda_t)$ where $X_t$ is the incidence, based on symptom onset on day $t$ and $\lambda_t$ is the force of infection. Utilising a discretised serial interval distribution, $w()$, we obtain the following form for $\lambda_t$:
+
+$$
+\lambda_t = \mathrm{R} * \sum_{s=1}^{t}X_sw(t-s)
+$$
+
+```{r pull-si, echo = FALSE}
+ebola <- epireview::load_epidata("ebola")
+params <- ebola[["params"]]
+# forest_plot_serial_interval(params)
+
+si <- params %>%
+  dplyr::filter(first_author_surname == "Jombart") %>%
+  dplyr::filter(parameter_type == "Human delay - serial interval") # described by a mean and sd
+
+mean <- si$parameter_value
+variance <- si$parameter_uncertainty_single_value^2
+
+scale <- variance/mean
+shape <- mean^2/variance
+
+sim_si <- rgamma(n = 10000, shape = shape, scale = scale)
+si_disc <- epitrix::fit_disc_gamma(x = sim_si,
+                                   mu_ini = mean,
+                                   cv_ini = (sqrt(variance))/mean)
+si_disc$distribution
+
+```
+
+```{r estimate-Rt, echo = FALSE}
+# estimate R and forecast Rt for 30 days
+R <- earlyR::get_R(x = i, # incidence object
+                   si_mean = mean,
+                   si_sd = sqrt(variance))
+
+```
+```{r project-forwards, echo = FALSE}
+proj <- project(i, R = R$R_ml, 
+        si = si_disc$distribution, 
+        n_sim = 100, n_days = 30, R_fix_within = TRUE)
+
+plot(i) %>%
+  add_projections(proj, c(.1, .5, .9)) +
+  theme_bw()
+
+
+```
+```{r case-proj}
+proj_30 <- proj %>% colSums() #number of cases estimated in the next 30 days
+  
+quantile(proj_30, 0.025)
+quantile(proj_30, 0.50)
+quantile(proj_30, 0.975)
+
+quantile(proj_30, 0.025)*adjusted_cfr$parameter_value/100
+quantile(proj_30, 0.50)*adjusted_cfr$parameter_value/100
+quantile(proj_30, 0.975)*adjusted_cfr$parameter_value/100
+
+quantile(proj_30, 0.025)*naive_cfr$parameter_value/100
+quantile(proj_30, 0.50)*naive_cfr$parameter_value/100
+quantile(proj_30, 0.975)*naive_cfr$parameter_value/100
+
+
+```
+In the next 30 days of the outbreak we project that there will be 2191.0 new cases (95% CI: 2056.45 - 2387.8). Comparing the two CFR estimates from Rico et al., 2016 fitted to the same data with and without adjustment, we would project vastly different numbers of deaths from patients who will have onset of symptom in the next 30 days. Considering the central estimates of both case projections and CFR parameter estimates, a naive CFR estimate would predict 1161.2 deaths, compared against 876.4 deaths when the adjusted CFR estimate is utilised.
+
+Although this seems like a small difference in terms of the number of deaths projected, in an active outbreak of Ebola, funerals can become sources of transmission of the pathogen. Therefore, it is necessary to have sufficient teams to conduct safe burials. However, by overestimating the number of deaths, we therefore also overestimate the demand on the healthcare resources required which can have substantial cost implications. Ensuring reliable and accurate projections of cases and deaths, enables appropriate planning of resources to support epidemic response and ensure optimal allocation of resources to support the control of the outbreak, support quarantine of exposed individuals, treat those sick with the disease and administer vaccination campaigns.
 
