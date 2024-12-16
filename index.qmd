@@ -160,16 +160,9 @@ _Guidance_:
 * Clearly state whether variant(s) of the pathogen of interest is known and, if so, report the name of the variant and how this was determined.
 * Specify which transmission pathways of disease were considered, e.g., human-to-human only, or including animal-to-human transmission.
 
-### Open science and reproducibility to enhance reuse
+### Lack of ability to reproduce and verify reported estimates
 
-The complexities involved in estimating and reporting epidemiological parameters mean that it is unlikely that all methodological aspects and considerations can be documented in the paper or even supplementary material. By sharing data and code it enables reproducibility and auditing of the methods used. Sharing the code used to infer an epidemiological parameter enables others to see which method, as well as any other packages that were used. There are several platforms that easily enable code sharing, most common are GitHub, GitLab and BitBucket. To release the software used and provide a unique identifier (e.g. DOI) services like Zenodo, Figshare and Dyrad, this provides a single referenceable snapshot of the code, removing any issue if the code changes on, for example GitHub. Following these and other good practices for code sharing will help others navigate and review the code (Wilson et al., 2017). Openly sharing code enables others to reproduce the estimates and verify the estimates. They may also be able to assess the quality of the methods with respect to the available data and possible bias-adjustments that may be required when working with real-time outbreak data (citation needed). Sharing the analysis code can also resolve ambiguities in parameter reporting. If the parameterisation of the distribution is unclear from the text (see Section 1) then by checking parameter arguments in the code clarifies their use.
-
-Sharing the data is as important as sharing the code. By data we mean the input data (i.e. outbreak case data) and output data (i.e. parameter estimates and fitting metadata). If possible the raw data used to fit a model to estimate an epidemiological parameter should be openly available. By sharing the raw data it enables reproducibility of the analysis used to estimate the epidemiological parameters, but also allows others to apply different models to the data. 
-
-Openly sharing epidemiological data can be restricted by personal identifiable information (PII) and data usage restrictions. There are some methods available to enable reproducibility even when the raw data cannot be shared. Anonymisation, if the personal identifiable information (PII) is not required by the method to infer the epidemiological parameter then this information can be removed, de-identified or anonymised prior to uploading the data (citations needed). Mock or synthetic data can be generated which has the same characteristics as the empirical data. This enables the analysis to be reproduced while removing any risk of identification or leaking personal information. 
-
-The epidemiological parameter output should also be shared in full when possible. Often if the epidemiological parameter are distribution parameters these will be reported in the text. But the estimates correlation matrix, variance-covariance matrix, convergence metrics (e.g. …) should be shared. For Bayesian analyses sharing the posterior distribution is most beneficial for reuse as it allows researchers to calculate whichever summary metric their use case requires (e.g. Highest Posterior Density (HPD) Interval).
-
+{{< include paper/reproducibility.qmd >}}
 
 ### Epidemiological parameter use and disjoint analysis pipelines
 
