@@ -45,40 +45,43 @@ known_outcomes_b <- initial_onsets * prop_known_b
 # Calculate cumulative fatal outcomes
 cumulative_deaths <- initial_onsets * cfr * prop_known_a
 
-# Plot the expected fatal outcomes for scenario (a)
-plot(time_range, cumulative_deaths, type = "l", col="black", lty = 2,
-     ylim=c(0, 100), xlim=c(0, max(time_range)),
-     xlab="Day", ylab="Number of Events",
-     main="Impact of Delay Distribution on CFR Estimation",
-     yaxt = "n")
-axis(2, at = seq(0, 100, by = 10))
+# Create a data frame for the point annotations at day 10
+points_data <- tibble(
+  day = 10,
+  value = c(initial_onsets * cfr * plnorm(10, meanlog_a, sdlog_a),
+            initial_onsets * cfr * plnorm(10, meanlog_b, sdlog_b)),
+  type = c("Known outcomes - Scenario A (mean=5)",
+           "Known outcomes - Scenario B (mean=36)"),
+  label = c("CFR 50% (onset-death mean = 5, sd = 2)",
+            "CFR 30% (onset-death mean = 36, sd = 2)")
+)
 
-# Also add curves for expected fatal outcomes for both interpretations
-lines(time_range, known_outcomes_a, col="blue", lty = 2)
-lines(time_range, known_outcomes_b, col="red", lty = 2)
-
-# Add a point at day 10 for both scenarios
-day <- 10
-abline(v = 10, col = "grey", cex = 0.5)
-points(day, initial_onsets * cfr * plnorm(day, meanlog_a, sdlog = sdlog_a), col="blue", pch=19)
-points(day, initial_onsets * cfr * plnorm(day, meanlog_b, sdlog = sdlog_b), col="red", pch=19)
-
-# Add text labels
-text(x = day + 0.5, y = initial_onsets * cfr * plnorm(day, meanlog_a, sdlog = sdlog_a) - 1,
-     labels = "CFR 50% (onset-death mean = 5, sd = 2)", col="blue", adj=0)
-text(x = day + 0.5, y = initial_onsets * cfr * plnorm(day, meanlog_b, sdlog = sdlog_b) -1,
-     labels = "CFR 30% (onset-death mean = 36, sd = 2)", col="red", adj=0)
-
-
-plot.new()  # start a new plot in the second panel
-
-legend("center",
-       legend=c("Estimated fatal outcomes (a): mean = 5 and sd = 2", "Estimated fatal outcomes (b): mean = 36 and sd = 2",
-                "Cumulative deaths"),
-       col=c("blue", "red", "black"),
-       lty=c(3, 3, 3),
-       bty="n")
-
-
+# Plot using ggplot2
+ggplot(plot_data, aes(x = day, y = value, color = type, linetype = type)) +
+  geom_line(size = 0.5) +
+  geom_vline(xintercept = 10, linetype = "dotted", color = "grey50") +
+  geom_point(data = points_data, aes(x = day, y = value, color = type), size = 3) +
+  geom_text(data = points_data, aes(x = day + 0.5, y = value - 0.7, label = label, color = type),
+            hjust = 0, size = 4.5, show.legend = FALSE) +
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, 10)) +
+  scale_color_manual(values = c(
+    "Known outcomes - Scenario A (mean=5)" = "blue",
+    "Known outcomes - Scenario B (mean=36)" = "red",
+    "Cumulative deaths (true CFR)" = "black"
+  )) +
+  scale_linetype_manual(values = c(
+    "Known outcomes - Scenario A (mean=5)" = "dashed",
+    "Known outcomes - Scenario B (mean=36)" = "dashed",
+    "Cumulative deaths (true CFR)" = "dotted"
+  )) +
+  labs(
+    title = "",
+    x = "Day",
+    y = "Number of Events",
+    color = "Legend",
+    linetype = "Legend"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 
 
