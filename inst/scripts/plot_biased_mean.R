@@ -4,11 +4,12 @@
 # parameters
 
 library(ggplot2)
+source("R/MCMC.R")
 
 # simulate gamma distributed data
 true_shape <- 15
-true_scale <- 0.5
-dat <- rgamma(n = 100, shape = true_shape, scale = true_scale)
+true_scale <- 0.8
+dat <- rgamma(n = 30, shape = true_shape, scale = true_scale)
 n <- length(dat)
 
 
@@ -157,7 +158,23 @@ ggplot2::ggsave(
   plot = gamma_dist_bias_mean_plot,
   device = "png",
   width = 200,
-  height = 150,
+  height = 100,
   units = "mm",
   dpi = 300
 )
+
+
+## translate into R0
+calc_R <- function(r,shape,scale){
+  (1 + (r/scale))^shape
+}
+
+# growth rate taken from COVID-19 peak in UK Autumn 2020
+r <- 0.04
+
+calc_R(r,true_shape,true_scale)
+calc_R(r,E_alpha,E_beta)
+
+
+
+
