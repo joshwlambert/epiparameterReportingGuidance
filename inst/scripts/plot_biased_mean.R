@@ -4,7 +4,6 @@
 # parameters
 
 library(ggplot2)
-source("R/MCMC.R")
 
 # simulate gamma distributed data
 true_shape <- 15
