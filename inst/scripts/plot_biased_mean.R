@@ -4,6 +4,8 @@
 # parameters
 
 library(ggplot2)
+set.seed(910)
+
 
 # simulate gamma distributed data
 true_shape <- 15
@@ -86,7 +88,7 @@ gamma_param_cor_plot <- ggplot2::ggplot(data = gamma_param_samples) +
   ) +
   ggplot2::scale_x_continuous(name = "Shape parameter") +
   ggplot2::scale_y_continuous(name = "Scale parameter") +
-  ggplot2::labs(title = paste("Correlation =",signif(cor,3))) +
+  ggplot2::labs(title = paste("Correlation =",signif(cor,2))) +
   ggplot2::theme_bw()
 
 # get mean from posteriors
@@ -136,12 +138,12 @@ gamma_dist_bias_mean_plot <- ggplot2::ggplot(data = df) +
     linetype = "dashed",
     linewidth = 1.2
   ) +
-  ggplot2::scale_x_continuous(name = "Mean value") +
+  ggplot2::scale_x_continuous(name = "Mean generation time (days)") +
   ggplot2::scale_y_continuous(name = "Count") +
   ggplot2::labs(
     title = paste(
       "Bias in Estimated Gamma Mean =",
-      signif(transform_mean - true_mean_post, 3)
+      signif(transform_mean - true_mean_post, 2)
     )
   ) +
   ggplot2::theme_bw()
