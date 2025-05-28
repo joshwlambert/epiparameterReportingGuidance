@@ -153,7 +153,7 @@ weibull_params <- epiparameter::convert_summary_stats_to_params(
 )
 
 gamma_dens <- dgamma(
-  val,
+  eval,
   shape = gamma_params$shape,
   scale = gamma_params$scale)
 lnorm_dens <- dlnorm(
