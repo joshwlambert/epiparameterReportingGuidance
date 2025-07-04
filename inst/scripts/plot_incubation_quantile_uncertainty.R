@@ -41,11 +41,11 @@ u95 <- quantile(colQuantiles(samples,probs=0.95),0.975)
 
 incubation_quantile_uncertainty_plot <- ggplot(samples_longer,
        aes(x=value,group=name))+
-  stat_ecdf(geom = "step",col="grey")+
+  stat_ecdf(geom = "step", col="grey", alpha = 0.4)+
   geom_hline(aes(yintercept=0.95),linetype="dashed")+
-  geom_linerange(aes(y=0.95,xmin=l95,xmax=u95),col="red",
+  geom_linerange(aes(y=0.95,xmin=l95,xmax=u95),col="#E15759",
                  lwd=1)+
-  geom_point(aes(x=q95,y=0.95),col="blue",size=3)+
+  geom_point(aes(x=q95,y=0.95),col="#4E79A7",size=3)+
   theme_bw()+
   labs(x="Day",y="Cumulative probability distribution\nof incubation period",col="")+
   xlim(c(0,80))+
@@ -56,7 +56,7 @@ ggplot2::ggsave(
   plot = incubation_quantile_uncertainty_plot,
   device = "png",
   width = 150,
-  height = 150,
+  height = 100,
   units = "mm",
   dpi = 300
 )
