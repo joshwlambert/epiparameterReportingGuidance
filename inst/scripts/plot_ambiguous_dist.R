@@ -127,8 +127,11 @@ high_mean_sd_ratio <- ggplot2::ggplot(data = dens_df) +
   ) +
   ggplot2::scale_x_continuous(name = "Serial interval (days)") +
   ggplot2::scale_y_continuous(name = "Density") +
-  ggplot2::labs(col = "Distribution") +
-  ggplot2::scale_color_manual(values = c("#3B9AB2", "#EBCC2A", "#F21A00")) +
+  ggplot2::scale_color_manual(
+    name = "Distribution",
+    labels = c("Gamma", "Lognormal", "Weibull"),
+    values = c("#3B9AB2", "#EBCC2A", "#F21A00")
+  ) +
   ggplot2::theme_bw() +
   ggplot2::theme(legend.position = "top")
 
@@ -153,7 +156,7 @@ weibull_params <- epiparameter::convert_summary_stats_to_params(
 )
 
 gamma_dens <- dgamma(
-  val,
+  eval,
   shape = gamma_params$shape,
   scale = gamma_params$scale)
 lnorm_dens <- dlnorm(
