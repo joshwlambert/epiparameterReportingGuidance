@@ -5,7 +5,7 @@
 
 library(ggplot2)
 set.seed(910)
-
+source("R/MCMC.R")
 
 # simulate gamma distributed data
 true_shape <- 15
