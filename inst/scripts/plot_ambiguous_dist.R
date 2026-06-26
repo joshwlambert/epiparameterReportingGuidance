@@ -98,31 +98,37 @@ high_mean_sd_ratio <- ggplot2::ggplot(data = dens_df) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = high_gamma_95q),
     linetype = 2,
+    linewidth = 1,
     col = "#3B9AB2"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = high_lnorm_95q),
     linetype = 2,
+    linewidth = 1,
     col = "#EBCC2A"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = high_weibull_95q),
     linetype = 2,
+    linewidth = 1,
     col = "#F21A00"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = high_gamma_99q),
     linetype = 3,
+    linewidth = 1,
     col = "#3B9AB2"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = high_lnorm_99q),
     linetype = 3,
+    linewidth = 1,
     col = "#EBCC2A"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = high_weibull_99q),
     linetype = 3,
+    linewidth = 1,
     col = "#F21A00"
   ) +
   ggplot2::scale_x_continuous(name = "Serial interval (days)") +
@@ -219,31 +225,37 @@ low_mean_sd_ratio <- ggplot2::ggplot(data = dens_df) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = low_gamma_95q),
     linetype = 2,
+    linewidth = 1,
     col = "#3B9AB2"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = low_lnorm_95q),
     linetype = 2,
+    linewidth = 1,
     col = "#EBCC2A"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = low_weibull_95q),
     linetype = 2,
+    linewidth = 1,
     col = "#F21A00"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = low_gamma_99q),
     linetype = 3,
+    linewidth = 1,
     col = "#3B9AB2"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = low_lnorm_99q),
     linetype = 3,
+    linewidth = 1,
     col = "#EBCC2A"
   ) +
   ggplot2::geom_vline(
     mapping = ggplot2::aes(xintercept = low_weibull_99q),
     linetype = 3,
+    linewidth = 1,
     col = "#F21A00"
   ) +
   ggplot2::scale_x_continuous(name = "Serial interval (days)") +
