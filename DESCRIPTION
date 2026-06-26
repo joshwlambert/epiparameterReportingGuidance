@@ -1,11 +1,24 @@
-Package: epiparameterReportingGuidance
 Type: Package
-Title: What the Package Does (Title Case)
+Package: epiparameterReportingGuidance
+Title: A package with functions for the reporting epidemiological
+    parameter guidelines
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(
+    person("Joshua W.", "Lambert", , "joshu.lambert@lshtm.ac.uk", role = c("cre", "aut", "cph"),
+           comment = c(ORCID = "0000-0001-5218-3046")),
+    person("Carmen", "Tamayo", , "carmen.tamayo-cuartero@lshtm.ac.uk", role = "aut",
+           comment = c(ORCID = "0000-0003-4184-2864")),
+    person("Sangeeta", "Bhatia", , "s.bhatia@imperial.ac.uk", role = "aut",
+           comment = c(ORCID = "0000-0001-6525-101X")),
+    person("Gina", "Cuomo-Dannenburg", role = "aut",
+           comment = c(ORCID = "0000-0001-6821-0352")),
+    person("Ruth", "McCabe", role = "aut",
+           comment = c(ORCID = "0000-0002-6368-9103"))
+  )
+Description: This R package companies the other files in the repository
+    for the manuscript on the epidemiological parameter reporting
+    guidelines.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.3.2
