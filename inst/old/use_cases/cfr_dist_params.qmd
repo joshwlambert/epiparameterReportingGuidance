@@ -23,6 +23,7 @@ library(incidence2)
 library(cfr)
 library(tidyr)
 library(dplyr)
+library(fitdistrplus)
 ```
 
 ```{r}
@@ -31,21 +32,25 @@ library(dplyr)
 # Step 1: Simulating data for the use case with o-d lognormal and CFR of 30%
 contact_distribution <- epiparameter(
   disease = "COVID-19",
-  epi_dist = "contact distribution",
-  prob_distribution = "pois",
-  prob_distribution_params = c(mean = 3)
+  epi_name = "contact distribution",
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "pois",
+    prob_distribution_params = c(mean = 3)
+  )
 )
 
 ip_COVID <- epiparameter(
   disease = "COVID-19",
-  epi_dist = "infectious period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 3, scale = 3)
+  epi_name = "infectious period",
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 3, scale = 3)
+  )
 )
 
 o_d_COVID <- epiparameter_db(
   disease = "covid-19",
-  epi_dist = "onset to death",
+  epi_name = "onset to death",
   single_epiparameter = TRUE
 )
 
