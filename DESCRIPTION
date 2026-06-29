@@ -4,7 +4,7 @@ Title: A package with functions for the reporting epidemiological
     parameter guidelines
 Version: 0.1.0
 Authors@R: c(
-    person("Joshua W.", "Lambert", , "joshu.lambert@lshtm.ac.uk", role = c("cre", "aut", "cph"),
+    person("Joshua W.", "Lambert", , "joshua.lambert@lshtm.ac.uk", role = c("cre", "aut", "cph"),
            comment = c(ORCID = "0000-0001-5218-3046")),
     person("Carmen", "Tamayo", , "carmen.tamayo-cuartero@lshtm.ac.uk", role = "aut",
            comment = c(ORCID = "0000-0003-4184-2864")),
