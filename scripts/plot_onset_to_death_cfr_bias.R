@@ -100,7 +100,7 @@ cfr_outcome_plot <- ggplot2::ggplot(data = events) +
   ggplot2::theme(legend.position = "bottom")
 
 ggplot2::ggsave(
-  file.path("plots", "cfr_outcome.png"),
+  file.path("plots", "onset_to_death_cfr_bias.png"),
   plot = cfr_outcome_plot,
   device = "png",
   width = 200,

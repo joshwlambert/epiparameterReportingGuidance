@@ -271,7 +271,7 @@ ambiguous_dist_plot <- cowplot::plot_grid(
 )
 
 ggplot2::ggsave(
-  file.path("plots", "ambiguous_dist.png"),
+  file.path("plots", "ambiguous_distribution_family.png"),
   plot = ambiguous_dist_plot,
   device = "png",
   width = 200,

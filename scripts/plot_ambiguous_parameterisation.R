@@ -258,7 +258,7 @@ ambiguous_params_plot <- ambiguous_dist_params_plot + ambiguous_onset_to_death_c
 
 
 ggplot2::ggsave(
-  file.path("plots", "ambiguous_dist_params.png"),
+  file.path("plots", "ambiguous_parameterisation.png"),
   plot = ambiguous_params_plot,
   device = "png",
   width = 250,
