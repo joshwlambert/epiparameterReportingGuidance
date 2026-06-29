@@ -107,8 +107,8 @@ exact figure matters.
 
 ## Software environment
 
-- **R version:** 4.2.3 (recorded in `renv.lock`)
-- **Dependency management:** `renv` (145 packages pinned)
+- **R version:** 4.4.2 (recorded in `renv.lock`)
+- **Dependency management:** `renv` (147 packages pinned)
 - **Key packages:** the analyses draw on the
   [Epiverse-TRACE](https://epiverse-trace.github.io/) ecosystem, including
   `epiparameter`, `simulist`, `cfr` and `incidence2`, alongside `ggplot2`,
