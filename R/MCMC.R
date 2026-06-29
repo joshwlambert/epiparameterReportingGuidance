@@ -41,6 +41,8 @@
 #'
 #' @return stub
 #' @keywords internal
+#' @importFrom stats dexp dgamma dlnorm optimize plnorm rlnorm runif
+#' @importFrom utils globalVariables
 NULL
 
 # Likelihood function -----------------------------------------------------
