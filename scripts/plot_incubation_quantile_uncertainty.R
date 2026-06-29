@@ -52,7 +52,7 @@ incubation_quantile_uncertainty_plot <- ggplot(samples_longer,
   ylim(c(0,1))
 
 ggplot2::ggsave(
-  file.path("inst", "plots", "incubation_quantile_uncertainty.png"),
+  file.path("plots", "incubation_quantile_uncertainty.png"),
   plot = incubation_quantile_uncertainty_plot,
   device = "png",
   width = 150,

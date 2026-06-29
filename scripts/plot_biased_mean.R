@@ -155,7 +155,7 @@ gamma_dist_bias_mean_plot <- cowplot::plot_grid(
 )
 
 ggplot2::ggsave(
-  file.path("inst", "plots", "gamma_dist_bias_mean.png"),
+  file.path("plots", "gamma_dist_bias_mean.png"),
   plot = gamma_dist_bias_mean_plot,
   device = "png",
   width = 200,

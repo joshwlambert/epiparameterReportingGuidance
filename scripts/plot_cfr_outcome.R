@@ -100,7 +100,7 @@ cfr_outcome_plot <- ggplot2::ggplot(data = events) +
   ggplot2::theme(legend.position = "bottom")
 
 ggplot2::ggsave(
-  file.path("inst", "plots", "cfr_outcome.png"),
+  file.path("plots", "cfr_outcome.png"),
   plot = cfr_outcome_plot,
   device = "png",
   width = 200,
