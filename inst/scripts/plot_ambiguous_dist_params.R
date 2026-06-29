@@ -175,6 +175,10 @@ cfr_bias_O2D$type <- "bias"
 
 cfr <- rbind(cfr, cfr_bias_O2D)
 
+# number of days since the index case (outbreak_start_date default in
+# simulist::sim_linelist() is 2023-01-01)
+cfr$days_since_index <- as.numeric(cfr$date_range - as.Date("2023-01-01"))
+
 # cfr_bias_central <- sapply(cfr_bias_O2D, `[[`, "severity_estimate")
 # cfr_bias_lower <- sapply(cfr_bias_O2D, `[[`, "severity_low")
 # cfr_bias_upper <- sapply(cfr_bias_O2D, `[[`, "severity_high")
@@ -188,10 +192,22 @@ cfr <- rbind(cfr, cfr_bias_O2D)
 
 cfr$type <- factor(cfr$type, levels = c("true", "bias"))
 
+# day with the largest absolute difference between the two CFR estimates
+max_diff_day <- cfr |>
+  dplyr::select(days_since_index, type, severity_estimate) |>
+  tidyr::pivot_wider(names_from = type, values_from = severity_estimate) |>
+  dplyr::mutate(diff = abs(true - bias)) |>
+  dplyr::slice_max(diff, n = 1) |>
+  dplyr::pull(days_since_index)
+
 ambiguous_onset_to_death_cfr_plot <- ggplot2::ggplot(data = cfr) +
+  ggplot2::geom_vline(
+    xintercept = max_diff_day,
+    linetype = 2
+  ) +
   ggplot2::geom_line(
     mapping = ggplot2::aes(
-      x = date_range,
+      x = days_since_index,
       y = severity_estimate,
       colour = type
     )
@@ -200,12 +216,12 @@ ambiguous_onset_to_death_cfr_plot <- ggplot2::ggplot(data = cfr) +
     mapping = ggplot2::aes(
       ymin = severity_low,
       ymax = severity_high,
-      x = date_range,
+      x = days_since_index,
       fill = type
     ),
     alpha = 0.2
   ) +
-  ggplot2::scale_x_date(name = "Date") +
+  ggplot2::scale_x_continuous(name = "Number of days since index case") +
   ggplot2::scale_y_continuous(
     name = "Real-time CFR estimate"
   ) +
