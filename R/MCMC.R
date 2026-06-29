@@ -120,8 +120,10 @@ move_shape <- function(curr_val_shape,
     mean_prior_shape,
     mean_prior_scale
   )
-  correction <- log(curr_val_shape) - log(new_val_shape) # correction for lognormal distribution
-  p_accept <- ratio_post + correction # things are additive here as on log scale
+  # correction for lognormal distribution
+  correction <- log(curr_val_shape) - log(new_val_shape)
+  # things are additive here as on log scale
+  p_accept <- ratio_post + correction
   if (p_accept > 0) p_accept <- 0
 
   # accept/reject step
@@ -139,7 +141,7 @@ move_shape <- function(curr_val_shape,
   # return a vector of size 2 where
   #		the first value is the new value in the chain
   #		the second value is 1 if the proposed value was accepted, 0 otherwise
-  return(c(updated_val_shape,accept))
+  return(c(updated_val_shape, accept))
 }
 
 ### move scale with a lognormal proposal ###
@@ -148,21 +150,25 @@ move_scale <- function(curr_val_shape,
                        curr_val_scale,
                        sdlog,
                        dat,
-                       mean_prior_shape=1000,
-                       mean_prior_scale=1000) {
+                       mean_prior_shape = 1000,
+                       mean_prior_scale = 1000) {
   # draw proposed value
   new_val_scale <- rlnorm(1, meanlog = log(curr_val_scale), sdlog = sdlog)
 
   # calculates probability of acceptance
   ratio_post <- log_posterior(dat, curr_val_shape, new_val_scale, mean_prior_shape, mean_prior_scale) - log_posterior(dat, curr_val_shape, curr_val_scale, mean_prior_shape, mean_prior_scale)
-  correction <- log(curr_val_scale) - log(new_val_scale) # correction for lognormal distribution
-  p_accept <- ratio_post + correction # things are additive here as on log scale
-  if(p_accept>0) {p_accept <- 0}
+  # correction for lognormal distribution
+  correction <- log(curr_val_scale) - log(new_val_scale)
+  # things are additive here as on log scale
+  p_accept <- ratio_post + correction
+  if (p_accept > 0) {
+    p_accept <- 0
+  }
 
   # accept/reject step
   tmp <- log(runif(1))
   # accepting with a certain probability
-  if (tmp<p_accept) {
+  if (tmp < p_accept) {
     updated_val_scale <- new_val_scale
     accept <- 1
   } else {
@@ -174,5 +180,5 @@ move_scale <- function(curr_val_shape,
   # return a vector of size 2 where
   #		the first value is the new value in the chain
   #		the second value is 1 if the proposed value was accepted, 0 otherwise
-  return(c(updated_val_scale,accept))
+  return(c(updated_val_scale, accept))
 }
