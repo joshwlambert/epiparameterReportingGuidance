@@ -1,109 +1,87 @@
 
-# Use case for reporting guidance paper #2- Mean of the sample reported
-# ambiguously so it's confused with the mean of the lognormal distribution
+###### Text for case study ######
 
-library(simulist)
-library(epiparameter)
+# Issue: An estimate of delay from disease onset to death is reported in a scientific publication in an ambiguous
+# way:
+
+"… the average duration between symptom onset and death of the patients was estimated. A lognormal distribution was fitted to the data. The mean onset-to-death delay was 5 days, with a standard deviation of 2."
+
+# In this case, authors actually mean to report the mean and sd (summary statistics) of a lognormal distribution.
+# However, these values could be misinterpreted as distribution parameters for this distribution.
+# Misinterpreting the mean as the meanlog of the distribution would yield a mean of 36 days, with a subsequent impact on the estimated delay-adjusted CFR.
+# Figure 5 illustrates this issue: during a growing epidemic, using a longer onset-to-death delay severely underestimates the CFR, as cases are wrongly expected to take over 7 times longer to reach a fatal outcome, thus overinflating the denominator.
+# With a mean onset-to-death delay of 5 days (correct interpretation), the adjusted CFR is 50%, versus 30% with the incorrect mean of 36 days.
+
+###### R script for case study ######
+# Loading required packages
+library(cfr)
 library(tidyverse)
 library(incidence2)
-library(cfr)
+library(data.table)
 
+# Define initial parameters
+initial_onsets <- 100    # Total reported cases at time 0
+cfr <- 0.5               # True CFR
 
-# Step 1: Simulating data for the use case with o-d lognormal and CFR of 30%
+# Define time range for the plot
+time_range <- 0:30
 
-contact_distribution <- epidist(
-  disease = "COVID-19",
-  epi_dist = "contact distribution",
-  prob_distribution = "pois",
-  prob_distribution_params = c(mean = 3)
+# Scenario (a): narrow delay distribution (correct interpretation)
+meanlog_a <- 1.53
+sdlog_a <- 0.38
+
+# Scenario (b): wider delay distribution
+meanlog_b <- 1.6 # log(5)
+sdlog_b <- 2
+
+# Calculate cumulative proportion with known outcomes for each scenario:
+prop_known_a <- plnorm(time_range, meanlog_a, sdlog = sdlog_a)
+prop_known_b <- plnorm(time_range, meanlog_b, sdlog = sdlog_b)
+
+# Calculate expected number of known outcomes
+known_outcomes_a <- initial_onsets * prop_known_a
+known_outcomes_b <- initial_onsets * prop_known_b
+
+# Calculate cumulative fatal outcomes
+cumulative_deaths <- initial_onsets * cfr * prop_known_a
+
+# Create a data frame for the point annotations at day 10
+points_data <- tibble(
+  day = 10,
+  value = c(initial_onsets * cfr * plnorm(10, meanlog_a, sdlog_a),
+            initial_onsets * cfr * plnorm(10, meanlog_b, sdlog_b)),
+  type = c("Known outcomes - Scenario A (mean=5)",
+           "Known outcomes - Scenario B (mean=36)"),
+  label = c("CFR 50% (onset-death mean = 5, sd = 2)",
+            "CFR 30% (onset-death mean = 36, sd = 2)")
 )
 
-ip_COVID <- epidist(
-  disease = "COVID-19",
-  epi_dist = "infectious period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 3, scale = 3)
-)
-
-o_d_COVID <- epidist_db(
-  disease = "covid-19",
-  epi_dist = "onset to death",
-  single_epidist = TRUE
-)
-
-
-set.seed(123)
-linelist_covid <- sim_linelist(
-  contact_distribution = contact_distribution,
-  infect_period = ip_COVID,
-  prob_infect = 0.7,
-  onset_to_hosp = NA,
-  hosp_risk = NA,
-  non_hosp_death_risk = 0.3,
-  onset_to_death = o_d_COVID,
-  outbreak_size = c(1000, 2000)
-)
-
-# STEP 2: Aggregation
-
-linelist_covid$date_death <- fifelse(linelist_covid$outcome == "died", linelist_covid$date_outcome, NA)
-incidence_COVID <- incidence2::incidence(linelist_covid, date_index = c("date_onset", "date_death"), interval = 1L)
-
-incidence_COVID$date_index <- as.Date(incidence_COVID$date_index)
-covid_inc_cfr <- cfr::prepare_data(incidence_COVID, cases_variable = "date_onset", deaths_variable = "date_death")
-
-ggplot(covid_inc_cfr, aes(x = date)) + geom_point(aes(y = cases), colour = "blue") +
-  geom_point(aes(y = deaths), colour = "red") + theme_bw() + scale_x_date(date_breaks = "7 days")
-
-# STEP 3: Truncating data
-
-# Real-time point at 2023-01-09
-
-real_time <- "2023-01-27"
-incidence_rt_covid <- covid_inc_cfr[covid_inc_cfr$date <= real_time,]
-
-# STEP 4: Converting parameters
-
-true_dist_params <- get_parameters(o_d_COVID)
-true_dist_summary_stats <- convert_params_to_summary_stats("lnorm", meanlog = true_dist_params[["meanlog"]], sdlog = true_dist_params[["sdlog"]])
-
-# STEP 5: Problem statement
-
-# We want to estimate the delay-adjusted CFR on our own outbreak data, and for this
-# we look at the available literature where we find a publication that reports the delay
-# from disease onset to death as follows:
-# "... the average duration between the time when symptoms first appeared and
-# death of the patients was estimated. The mean onset-death delay was of 14.5 days,
-# with a standard deviation of 6.7"
+# Plot using ggplot2
+ggplot(plot_data, aes(x = day, y = value, color = type, linetype = type)) +
+  geom_line(size = 0.5) +
+  geom_vline(xintercept = 10, linetype = "dotted", color = "grey50") +
+  geom_point(data = points_data, aes(x = day, y = value, color = type), size = 3) +
+  geom_text(data = points_data, aes(x = day + 0.5, y = value - 0.7, label = label, color = type),
+            hjust = 0, size = 4.5, show.legend = FALSE) +
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, 10)) +
+  scale_color_manual(values = c(
+    "Known outcomes - Scenario A (mean=5)" = "blue",
+    "Known outcomes - Scenario B (mean=36)" = "red",
+    "Cumulative deaths (true CFR)" = "black"
+  )) +
+  scale_linetype_manual(values = c(
+    "Known outcomes - Scenario A (mean=5)" = "dashed",
+    "Known outcomes - Scenario B (mean=36)" = "dashed",
+    "Cumulative deaths (true CFR)" = "dotted"
+  )) +
+  labs(
+    title = "",
+    x = "Day",
+    y = "Number of Events",
+    color = "Legend",
+    linetype = "Legend"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 
 
-# 14.5 and 6.7 are really distribution summary stats
-
-# TRUE CFR
-
-true_cfr <- cfr::cfr_static(incidence_rt_covid, delay_density = function(x) dlnorm(x, meanlog = true_dist_params[["meanlog"]], sdlog = true_dist_params[["sdlog"]]))
-
-
-# a) We think they are meanlog and sdlog
-
-crf_assumed_params <- cfr::cfr_static(incidence_rt_covid, delay_density = function(x) dlnorm(x, meanlog = true_dist_summary_stats[["mean"]], sdlog = true_dist_summary_stats[["sd"]]))
-
-# b) We think they are sample statistics
-
-# b.1) Lognormal to randomly generate sample and lognormal fitted distribution
-
-lnorm_sample <- rlnorm(n = 500, meanlog = true_dist_params[["meanlog"]], sdlog = true_dist_params[["sdlog"]])
-
-lnorm_fit <- fitdistrplus::fitdist(data = lnorm_sample, distr = "lnorm")
-
-cfr_sample_lnorm <- cfr::cfr_static(incidence_rt_covid, delay_density = function(x) dlnorm(x, meanlog = lnorm_fit$estimate[["meanlog"]], sdlog = lnorm_fit$estimate[["sdlog"]]))
-
-# b.2) Gamma and gamma
-
-gamma_parameters <- convert_summary_stats_to_params("gamma", mean = true_dist_summary_stats[["mean"]], sd = true_dist_summary_stats[["sd"]])
-
-gamma_sample <- rgamma(n = 500, shape = gamma_parameters$shape, scale = gamma_parameters$scale)
-
-gamma_fit <- fitdistrplus::fitdist(data = gamma_sample, distr = "gamma")
-
-cfr_sample_gamma <- cfr::cfr_static(incidence_rt_covid, delay_density = function(x) dgamma(x, shape = gamma_fit$estimate[["shape"]], rate = gamma_fit$estimate[["rate"]]))
