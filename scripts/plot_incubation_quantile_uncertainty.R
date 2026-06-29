@@ -47,7 +47,7 @@ incubation_quantile_uncertainty_plot <- ggplot(samples_longer,
                  lwd=1)+
   geom_point(aes(x=q95,y=0.95),col="#4E79A7",size=3)+
   theme_bw()+
-  labs(x="Day",y="Cumulative probability distribution\nof incubation period",col="")+
+  labs(x="Day",y="Cumulative probability distribution\nof incubation period")+
   xlim(c(0,80))+
   ylim(c(0,1))
 
