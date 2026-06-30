@@ -9,7 +9,7 @@
 \alias{log_posterior}
 \alias{move_shape}
 \alias{move_scale}
-\title{Functions to run an MCMC to estimate the parameters of a gamma distribution}
+\title{Metropolis-Hastings MCMC for fitting a gamma distribution}
 \usage{
 log_likelihood_i(i, dat, shape, scale)
 
@@ -46,36 +46,64 @@ move_scale(
 )
 }
 \arguments{
-\item{i}{stub}
+\item{i}{Integer index of a single observation in `dat`, selecting the
+element whose log-likelihood contribution is computed.}
 
-\item{dat}{stub}
+\item{dat}{Numeric vector of observed data assumed to follow a gamma
+distribution.}
 
-\item{shape}{stub}
+\item{shape}{Positive numeric shape parameter of the gamma distribution.}
 
-\item{scale}{stub}
+\item{scale}{Positive numeric scale parameter of the gamma distribution.}
 
-\item{param}{stub}
+\item{param}{Numeric parameter value at which the exponential prior density
+is evaluated.}
 
-\item{mean_prior}{stub}
+\item{mean_prior}{Numeric mean of the exponential prior distribution.
+Defaults to 1000, giving a near-flat, weakly informative prior.}
 
-\item{mean_prior_shape}{stub}
+\item{mean_prior_shape}{Numeric mean of the exponential prior on the gamma
+shape parameter (default 1000).}
 
-\item{mean_prior_scale}{stub}
+\item{mean_prior_scale}{Numeric mean of the exponential prior on the gamma
+scale parameter (default 1000).}
 
-\item{curr_val_shape}{stub}
+\item{curr_val_shape}{Numeric current value of the gamma shape parameter in
+the MCMC chain.}
 
-\item{curr_val_scale}{stub}
+\item{curr_val_scale}{Numeric current value of the gamma scale parameter in
+the MCMC chain.}
 
-\item{sdlog}{stub}
+\item{sdlog}{Numeric standard deviation, on the log scale, of the lognormal
+proposal distribution used to draw a new parameter value.}
 }
 \value{
-stub
+`log_likelihood_i()` and `log_likelihood()` return the numeric log-likelihood
+of a single observation and of the full data set, respectively.
+`log_prior_flat_exp()`, `log_prior()` and `log_posterior()` return a numeric
+log prior or log (unnormalised) posterior density. `move_shape()` and
+`move_scale()` return a length-2 numeric vector: the updated parameter value
+followed by an acceptance indicator (1 if the proposal was accepted, 0 if
+rejected).
 }
 \description{
-These function enable us to fit a gamma distribution to data
+A minimal set of functions implementing a random-walk Metropolis-Hastings
+MCMC sampler to estimate the shape and scale parameters of a gamma
+distribution from observed data. The collection provides the building blocks
+of the sampler: the likelihood, the priors, the (unnormalised) posterior, and
+the parameter update ("move") steps.
 }
 \details{
-NOTE EVERYWHERE WE WORK ON THE LOG SCALE
+The data in `dat` are assumed to be independent draws from a gamma
+distribution with unknown `shape` and `scale`. Each parameter is given an
+independent, weakly informative exponential prior. New parameter values are
+proposed on the log scale using a lognormal proposal distribution and are
+accepted or rejected with the standard Metropolis-Hastings acceptance
+probability; because the lognormal proposal is asymmetric, a Hastings
+correction term is included. All densities are computed and combined on the
+log scale for numerical stability.
+
+Everywhere we work on the log scale.
 }
 \author{
 Anne Cori & Joshua Lambert
