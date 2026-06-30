@@ -1,6 +1,6 @@
 Type: Package
 Package: epiparameterReportingGuidance
-Title: Reporting Guidance for Epidemiological Parameters
+Title: Impact of Ambiguously Reported Epidemiological Parameters
 Version: 1.0.0
 Authors@R: c(
     person("Joshua W.", "Lambert", , "joshua.lambert@lshtm.ac.uk", role = c("cre", "aut", "cph"),
