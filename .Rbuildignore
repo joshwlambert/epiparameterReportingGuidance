@@ -6,3 +6,8 @@
 ^\.DS_Store$
 ^plots$
 ^scripts$
+^\.gitignore$
+^\.Rhistory$
+^Rplots\.pdf$
+^.*\.Rcheck$
+^.*\.tar\.gz$

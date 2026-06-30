@@ -4,3 +4,13 @@
 .Ruserdata
 
 /.quarto/
+
+# macOS
+.DS_Store
+
+# stray plot device output (e.g. from plot() calls in scripts)
+Rplots.pdf
+
+# R package build / check artefacts
+*.tar.gz
+*.Rcheck/
