@@ -17,7 +17,15 @@ type: software
 version: 1.0.0
 date-released: '2026-08-13'
 license: MIT
+doi: 10.5281/zenodo.21921418
 repository-code: 'https://github.com/joshwlambert/epiparameterReportingGuidance'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21921418
+    description: Concept DOI for all versions of this software archive
+  - type: doi
+    value: 10.5281/zenodo.21921419
+    description: DOI for version 1.0.0
 keywords:
   - epidemiology
   - infectious-disease-modelling
