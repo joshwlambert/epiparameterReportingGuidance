@@ -54,8 +54,7 @@
 #' @author Anne Cori & Joshua Lambert
 #'
 #' @keywords internal
-#' @importFrom stats dexp dgamma dlnorm optimize plnorm rlnorm runif
-#' @importFrom utils globalVariables
+#' @importFrom stats dexp dgamma rlnorm runif
 NULL
 
 # Likelihood function -----------------------------------------------------
