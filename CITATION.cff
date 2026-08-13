@@ -1,0 +1,107 @@
+cff-version: 1.2.0
+message: >-
+  This repository contains the analysis code for the paper below. If you use
+  it, please cite the paper. To cite the software archive specifically, use the
+  Zenodo DOI recorded in `identifiers`.
+title: >-
+  epiparameterReportingGuidance: Impact of Ambiguously Reported
+  Epidemiological Parameters
+abstract: >-
+  Analysis code and figures accompanying the paper "The impact of ambiguously
+  reported epidemiological parameters for infectious disease modelling and
+  recommended best practices". The repository reproduces a series of case
+  studies illustrating how incomplete or ambiguous reporting of epidemiological
+  parameters can propagate through downstream analyses and affect public health
+  conclusions.
+type: software
+version: 1.0.0
+date-released: '2026-08-13'
+license: MIT
+repository-code: 'https://github.com/joshwlambert/epiparameterReportingGuidance'
+keywords:
+  - epidemiology
+  - infectious-disease-modelling
+  - epidemiological-parameters
+  - delay-distributions
+  - reproducibility
+  - research-compendium
+  - r
+authors:
+  - given-names: Joshua W.
+    family-names: Lambert
+    email: joshua.lambert@lshtm.ac.uk
+    orcid: 'https://orcid.org/0000-0001-5218-3046'
+  - given-names: Carmen
+    family-names: Tamayo
+    email: carmen.tamayo-cuartero@lshtm.ac.uk
+    orcid: 'https://orcid.org/0000-0003-4184-2864'
+  - given-names: Sangeeta
+    family-names: Bhatia
+    email: s.bhatia@imperial.ac.uk
+    orcid: 'https://orcid.org/0000-0001-6525-101X'
+  - given-names: Gina
+    family-names: Cuomo-Dannenburg
+    orcid: 'https://orcid.org/0000-0001-6821-0352'
+  - given-names: Ruth
+    family-names: McCabe
+    orcid: 'https://orcid.org/0000-0002-6368-9103'
+preferred-citation:
+  type: article
+  title: >-
+    The impact of ambiguously reported epidemiological parameters for
+    infectious disease modelling and recommended best practices
+  journal: Epidemics
+  year: 2026
+  number: '100942'
+  issn: 1755-4365
+  doi: 10.1016/j.epidem.2026.100942
+  authors:
+    - given-names: Carmen
+      family-names: Tamayo Cuartero
+    - given-names: Joshua W.
+      family-names: Lambert
+      orcid: 'https://orcid.org/0000-0001-5218-3046'
+    - given-names: Gina
+      family-names: Cuomo-Dannenburg
+      orcid: 'https://orcid.org/0000-0001-6821-0352'
+    - given-names: Julia
+      family-names: Fitzner
+    - given-names: Patricia
+      family-names: Ndumbi
+    - given-names: Chloe
+      family-names: Rice
+    - given-names: Dina
+      family-names: Saulo
+    - given-names: Lisa
+      family-names: Waddell
+    - given-names: James M.
+      family-names: Azam
+    - given-names: Patrick
+      family-names: Doohan
+    - given-names: Joseph T.
+      family-names: Hicks
+    - given-names: Kelly
+      family-names: McCain
+    - given-names: Christian
+      family-names: Morgenstern
+    - given-names: Tristan M.
+      family-names: Naidoo
+    - given-names: Shazia
+      family-names: Ruybal-Pesántez
+    - given-names: Thomas
+      family-names: Rawson
+    - given-names: Cosmo
+      family-names: Santoni
+    - given-names: H. Juliette T.
+      family-names: Unwin
+    - name: EpiParameter Workshop Attendees
+    - given-names: Adam
+      family-names: Kucharski
+    - given-names: Anne
+      family-names: Cori
+    - given-names: Sangeeta
+      family-names: Bhatia
+      orcid: 'https://orcid.org/0000-0001-6525-101X'
+    - given-names: Ruth
+      family-names: McCabe
+      orcid: 'https://orcid.org/0000-0002-6368-9103'
