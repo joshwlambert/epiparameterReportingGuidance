@@ -14,20 +14,21 @@ Authors@R: c(
     person("Ruth", "McCabe", role = "aut",
            comment = c(ORCID = "0000-0002-6368-9103"))
   )
-Description: Analysis code and figures accompanying the manuscript "The impact
-    of ambiguously reported epidemiological parameters for infectious disease
-    modelling and recommended best practices". The repository reproduces a
-    series of case studies illustrating how incomplete or ambiguous reporting
-    of epidemiological parameters - such as delay distributions, their
+Description: Analysis code and figures accompanying Tamayo Cuartero et al.
+    (2026) "The impact of ambiguously reported epidemiological parameters for
+    infectious disease modelling and recommended best practices"
+    <doi:10.1016/j.epidem.2026.100942>. The repository reproduces a series of
+    case studies illustrating how incomplete or ambiguous reporting of
+    epidemiological parameters - such as delay distributions, their
     parameterisation, and associated uncertainty - can propagate through
     downstream analyses and affect public health conclusions.
 License: MIT + file LICENSE
-URL: https://github.com/joshwlambert/epiparameterReportingGuidance
+URL: https://github.com/joshwlambert/epiparameterReportingGuidance,
+    https://doi.org/10.1016/j.epidem.2026.100942
 BugReports: https://github.com/joshwlambert/epiparameterReportingGuidance/issues
 Depends:
     R (>= 4.1.0)
 Imports:
-    stats,
-    utils
+    stats
 Encoding: UTF-8
 Config/roxygen2/version: 8.0.0
