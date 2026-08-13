@@ -3,6 +3,7 @@
 <!-- badges: start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 [![Paper DOI](https://img.shields.io/badge/Paper-10.1016%2Fj.epidem.2026.100942-blue.svg)](https://doi.org/10.1016/j.epidem.2026.100942)
+[![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21921418.svg)](https://doi.org/10.5281/zenodo.21921418)
 <!-- badges: end -->
 
 A research compendium of the analysis code used to produce the figures in:
@@ -132,9 +133,16 @@ To cite the **paper**, use the reference at the top of this README. From R:
 citation("epiparameterReportingGuidance")
 ```
 
-To cite this **code archive** specifically, use its Zenodo DOI (see the
-[Releases](https://github.com/joshwlambert/epiparameterReportingGuidance/releases)
-page for the DOI corresponding to each version).
+To cite this **code archive** specifically, use its Zenodo DOI:
+
+- All versions (resolves to the latest):
+  [10.5281/zenodo.21921418](https://doi.org/10.5281/zenodo.21921418)
+- This release, v1.0.0:
+  [10.5281/zenodo.21921419](https://doi.org/10.5281/zenodo.21921419)
+
+Cite the version DOI when you need to point at the exact code used for a
+specific analysis, and the concept DOI when referring to the compendium in
+general.
 
 ## Compendium authors
 
