@@ -1,0 +1,40 @@
+citHeader(
+  "To cite the analysis in this repository, please cite the paper:"
+)
+
+bibentry(
+  bibtype  = "Article",
+  title    = paste(
+    "The impact of ambiguously reported epidemiological parameters for",
+    "infectious disease modelling and recommended best practices"
+  ),
+  author   = c(
+    person("Carmen", "Tamayo Cuartero"),
+    person("Joshua W.", "Lambert"),
+    person("Gina", "Cuomo-Dannenburg"),
+    person("Julia", "Fitzner"),
+    person("Patricia", "Ndumbi"),
+    person("Chloe", "Rice"),
+    person("Dina", "Saulo"),
+    person("Lisa", "Waddell"),
+    person("James M.", "Azam"),
+    person("Patrick", "Doohan"),
+    person("Joseph T.", "Hicks"),
+    person("Kelly", "McCain"),
+    person("Christian", "Morgenstern"),
+    person("Tristan M.", "Naidoo"),
+    person("Shazia", "Ruybal-Pesantez"),
+    person("Thomas", "Rawson"),
+    person("Cosmo", "Santoni"),
+    person("H. Juliette T.", "Unwin"),
+    person("EpiParameter Workshop Attendees"),
+    person("Adam", "Kucharski"),
+    person("Anne", "Cori"),
+    person("Sangeeta", "Bhatia"),
+    person("Ruth", "McCabe")
+  ),
+  journal  = "Epidemics",
+  year     = "2026",
+  pages    = "100942",
+  doi      = "10.1016/j.epidem.2026.100942"
+)
