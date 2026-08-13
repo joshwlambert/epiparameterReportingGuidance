@@ -5,6 +5,13 @@ library(matrixStats)
 library(epiparameter)
 library(tidyr)
 
+# No seed was set when the version of this figure published in the paper was
+# generated, so plots/incubation_quantile_uncertainty.png cannot be reproduced
+# exactly. The seed below makes repeated runs of this script self-consistent.
+# The resulting figure differs from the published one only in the stochastic
+# realisation of the sampled means and SDs; it is qualitatively identical.
+set.seed(1)
+
 mean_c <- 12.6
 sd_c <- 13.1
 
