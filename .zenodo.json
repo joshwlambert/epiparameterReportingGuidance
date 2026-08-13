@@ -1,0 +1,58 @@
+{
+  "upload_type": "software",
+  "title": "epiparameterReportingGuidance: Impact of Ambiguously Reported Epidemiological Parameters",
+  "version": "1.0.0",
+  "description": "<p>Research compendium of the analysis code used to produce the figures in Tamayo Cuartero et al. (2026), <em>The impact of ambiguously reported epidemiological parameters for infectious disease modelling and recommended best practices</em>, <em>Epidemics</em>, 100942, <a href=\"https://doi.org/10.1016/j.epidem.2026.100942\">doi:10.1016/j.epidem.2026.100942</a>.</p><p>The repository reproduces a series of case studies illustrating how incomplete or ambiguous reporting of epidemiological parameters &mdash; such as delay distributions, their parameterisation, and associated uncertainty &mdash; can propagate through downstream analyses and affect public health conclusions. The exact software environment is pinned with <code>renv</code>.</p>",
+  "license": "mit",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Lambert, Joshua W.",
+      "affiliation": "London School of Hygiene and Tropical Medicine",
+      "orcid": "0000-0001-5218-3046"
+    },
+    {
+      "name": "Tamayo, Carmen",
+      "affiliation": "London School of Hygiene and Tropical Medicine",
+      "orcid": "0000-0003-4184-2864"
+    },
+    {
+      "name": "Bhatia, Sangeeta",
+      "affiliation": "Imperial College London",
+      "orcid": "0000-0001-6525-101X"
+    },
+    {
+      "name": "Cuomo-Dannenburg, Gina",
+      "affiliation": "Imperial College London",
+      "orcid": "0000-0001-6821-0352"
+    },
+    {
+      "name": "McCabe, Ruth",
+      "affiliation": "Imperial College London",
+      "orcid": "0000-0002-6368-9103"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.1016/j.epidem.2026.100942",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://github.com/joshwlambert/epiparameterReportingGuidance",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "keywords": [
+    "epidemiology",
+    "infectious disease modelling",
+    "epidemiological parameters",
+    "delay distributions",
+    "reproducibility",
+    "research compendium",
+    "R"
+  ]
+}
