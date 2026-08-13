@@ -1,5 +1,7 @@
 ^renv$
 ^renv\.lock$
+^CITATION\.cff$
+^\.zenodo\.json$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
